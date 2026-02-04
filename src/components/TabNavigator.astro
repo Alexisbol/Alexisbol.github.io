@@ -60,18 +60,10 @@ import { education } from '../data/education'
 
         // Animate the tab-slider to the active button
         if (activeButton && tabSlider) {
-            const nav = activeButton.parentElement
-            const navRect = nav.getBoundingClientRect()
-            const btnRect = activeButton.getBoundingClientRect()
-            // Calculate left relative to nav
-            const left = btnRect.left - navRect.left
-            tabSlider.style.left = left + 'px'
-            // Adjust top position to account for nav's padding
-            const navStyles = window.getComputedStyle(nav)
-            // const navPaddingTop = parseFloat(navStyles.paddingTop) || 0;
-            tabSlider.style.top = (parseFloat(navStyles.paddingTop) || 0) + 'px'
-            tabSlider.style.width = btnRect.width + 'px'
-            tabSlider.style.height = btnRect.height + 'px'
+            tabSlider.style.left = activeButton.offsetLeft + 'px'
+            tabSlider.style.top = activeButton.offsetTop + 'px'
+            tabSlider.style.width = activeButton.offsetWidth + 'px'
+            tabSlider.style.height = activeButton.offsetHeight + 'px'
         }
     }
 
@@ -83,7 +75,7 @@ import { education } from '../data/education'
     })
 
     // Set the first tab as active by default on page load
-    setTimeout(() => setActiveTab('projects'), 350)
+    setActiveTab('projects')
 
     // Reposition slider on window resize
     window.addEventListener('resize', () => {

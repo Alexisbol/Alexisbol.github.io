@@ -17,8 +17,28 @@ export interface ExperienceProps {
 }
 
 import mcgillRoboticsLogo from '../assets/logos-icons/mcgill-robotics-logo.png'
+import lisLogo from '../assets/logos-icons/LIS-logo.png'
 
 export const experiences: ExperienceProps[] = [
+    {
+        company: {
+            name: 'Laboratory of Intelligent Systems @ EPFL',
+            url: 'https://lis.epfl.ch',
+            logo: {
+                type: 'img',
+                value: lisLogo,
+            },
+        },
+        positions: [
+            {
+                title: 'Graduate Researcher',
+                // Highlights: Embedded, Real-time, Deep Learning, Hardware constraints
+                description: `Designing a lightweight deep learning pipeline for dense depth estimation on raw fisheye imagery. Targeting real-time inference on embedded drone hardware (NVIDIA Jetson) by bypassing standard rectification latency and artifacts.`,
+                fromDate: 'Feb 2026',
+                toDate: 'May 2026',
+            },
+        ],
+    },
     {
         company: {
             name: 'McGill Robotics',
@@ -31,7 +51,8 @@ export const experiences: ExperienceProps[] = [
         positions: [
             {
                 title: 'AUV Software Engineer',
-                description: `As part of the AUV (Autonomous Underwater Vehicle) team, I refactored our Docker-containerized Unity simulation, reducing frame times by ~50%. I also initiated a documentation overhaul for better onboarding and contributed to migrating our project from ROS 1 to ROS 2.`,
+                // Highlights: Optimization, Docker, Migration
+                description: `Refactored the Dockerized Unity simulation to improve code clarity and cut frame times by ~50%. Contributed to a critical stack migration from ROS 1 to ROS 2 and led a documentation overhaul to accelerate developer onboarding.`,
                 fromDate: 'Sep 2024',
                 toDate: 'Jun 2025',
             },
@@ -45,7 +66,8 @@ export const experiences: ExperienceProps[] = [
         positions: [
             {
                 title: 'Honours Research Project',
-                description: `Investigated generative Flow Matching models, focusing on Acceleration Flow Matching (AFM) implemented in PyTorch. I analyzed its advantages over standard Flow Matching through comparative experiments and authored a report on the methodology, results, and potential applications.`,
+                // Highlights: PyTorch, Generative AI, Benchmarking
+                description: `Investigated Generative Flow Matching models, specifically Acceleration Flow Matching (AFM). Extended a PyTorch codebase to benchmark AFM against standard baselines, analyzing performance gains in modeling higher-order dynamics.`,
                 fromDate: 'Jan 2025',
                 toDate: 'Apr 2025',
             },

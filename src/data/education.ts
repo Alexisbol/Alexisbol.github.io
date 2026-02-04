@@ -30,7 +30,7 @@ export const education: EducationProps[] = [
         degree: 'MSc - Robotics',
         fromDate: 'Sep 2025',
         toDate: 'Dec 2027 (expected)',
-        description: `The next chapter! I've just started my Master's in Robotics at EPFL, specializing in mobile robotics and intelligent systems. I'm excited to be diving into core topics like model predictive control, reinforcement learning, and computer vision, and can't wait to tackle the hands-on research projects ahead.`,
+        description: `I'm specializing in Mobile Robotics, with a focus on Embodied AI. After knocking out the rigorous mathematical foundations (MPC, Convex Optimization), I'm now applying them to physical systems - currently doing research on real-time vision for drones, alongside coursework in RL, CV and deep learning for autonomous vehicles.`,
     },
     {
         institution: {

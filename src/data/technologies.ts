@@ -25,6 +25,10 @@ import modernglLogo from '../assets/logos-icons/moderngl-logo.png'
 import ollamaLogo from '../assets/logos-icons/ollama-logo.png'
 import geminiLogo from '../assets/logos-icons/gemini-logo.svg'
 import dspyLogo from '../assets/logos-icons/dspy-logo.png'
+import cvxpyLogo from '../assets/logos-icons/cvxpy-logo-light.png'
+import casadiLogo from '../assets/logos-icons/casadi-logo-light.svg'
+import webotsLogo from '../assets/logos-icons/webots-logo.png'
+import thymioLogo from '../assets/logos-icons/thymio-logo.png'
 
 export const technologies: Record<string, TechProps> = {
     python: {
@@ -125,7 +129,7 @@ export const technologies: Record<string, TechProps> = {
         logo: { type: 'img', value: ollamaLogo },
     },
     gemini: {
-        title: 'Gemini',
+        title: 'Gemini API',
         url: 'https://ai.google.dev/gemini-api/docs/',
         logo: { type: 'svg', value: geminiLogo },
     },
@@ -133,6 +137,26 @@ export const technologies: Record<string, TechProps> = {
         title: 'DSPy',
         url: 'https://dspy.ai/',
         logo: { type: 'img', value: dspyLogo },
+    },
+    cvxpy: {
+        title: 'CVXPY',
+        url: 'https://www.cvxpy.org/',
+        logo: { type: 'img', value: cvxpyLogo },
+    },
+    casadi: {
+        title: 'CasADi',
+        url: 'https://web.casadi.org/',
+        logo: { type: 'img', value: casadiLogo },
+    },
+    webots: {
+        title: 'Webots',
+        url: 'https://cyberbotics.com/',
+        logo: { type: 'img', value: webotsLogo },
+    },
+    thymio: {
+        title: 'Thymio',
+        url: 'https://www.thymio.org/',
+        logo: { type: 'img', value: thymioLogo },
     },
 }
 

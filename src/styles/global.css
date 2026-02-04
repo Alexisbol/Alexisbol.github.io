@@ -9,13 +9,20 @@
     /* --color-stone-200: oklch(0.923 0.003 48.717); */
     --color-stone-250: oklch(0.896 0.004 52.366);
     /* --color-stone-300: oklch(0.869 0.005 56.366); */
-    --color-darker: oklch(21.073% 0.02761 293.715);
-    --color-dark: oklch(22.804% 0.02044 254.919);
+    --color-darkest: oklch(13% 0.035 150);
+    --color-darker: oklch(18% 0.018 145);
+    --color-dark: oklch(21% 0.023 160);
     --color-medium: oklch(45.285% 0.07205 198.853);
     --color-light: oklch(70.684% 0.10912 198.08);
 }
 
 :not(*) {
+    background-color: oklch(13.121% 0.0127 155.733);
+    background-color: oklch(16.825% 0.02893 169.801);
+
+    card-bg-color: oklch(13% 0.035 150);
+    card-bg-color: oklch(13% 0.028 261.692);
+
     background-color: oklch(21.073% 0.02761 293.715);
     background-color: oklch(22.804% 0.02044 254.919);
     background-color: oklch(36.767% 0.05805 212.325);
@@ -43,7 +50,7 @@
 }
 
 html {
-    @apply m-0 w-full lg:h-full font-rubik text-sm text-slate-100/85 bg-linear-165 from-dark to-darker;
+    @apply m-0 w-full lg:h-full font-rubik text-sm text-stone-100/90 bg-linear-165 from-dark to-darker;
 }
 
 body {
@@ -83,34 +90,34 @@ h2 {
 
 .contact-button {
     @apply py-0.75 px-1.75 w-fit z-10 flex gap-1 items-center whitespace-nowrap 
-    text-base lg:text-lg rounded-[9px] bg-violet-200 text-slate-950 fill-slate-950 font-medium
+    text-base lg:text-lg rounded-[9px] bg-lime-200 text-stone-950 fill-stone-950 font-medium
     transition-all duration-100 ease-out;
 
     &:hover,
     &:focus {
-        @apply bg-violet-100 text-slate-800 fill-slate-800;
+        @apply bg-lime-100 text-stone-800 fill-stone-800;
 
-        box-shadow: 0 0 8px rgba(230, 220, 255, 0.4);
+        box-shadow: 0 0 8px rgba(190, 255, 175, 0.4);
     }
 }
 
 @utility text-glow-s2 {
-    text-shadow: 0 0 6px rgba(230, 220, 255, 0.35);
+    text-shadow: 0 0 6px rgba(190, 255, 175, 0.35);
 }
 @utility text-glow-m3 {
-    text-shadow: 0 0 8px rgba(230, 220, 255, 0.4);
+    text-shadow: 0 0 8px rgba(190, 255, 175, 0.4);
 }
 @utility glow-m1 {
-    box-shadow: 0 0 8px 1px rgba(230, 220, 255, 0.1);
+    box-shadow: 0 0 8px 1px rgba(190, 255, 175, 0.1);
 }
 @utility glow-m2 {
-    box-shadow: 0 0 8px 1px rgba(230, 220, 255, 0.22);
+    box-shadow: 0 0 8px 1px rgba(190, 255, 175, 0.22);
 }
 @utility glow-m3 {
-    box-shadow: 0 0 8px 1px rgba(230, 220, 255, 0.333);
+    box-shadow: 0 0 8px 1px rgba(190, 255, 175, 0.333);
 }
 @utility glow-l4 {
-    box-shadow: 0 0 10px 1px rgba(230, 220, 255, 0.55);
+    box-shadow: 0 0 10px 1px rgba(190, 255, 175, 0.55);
 }
 
 #tab-container {
@@ -125,9 +132,9 @@ h2 {
 
         /* Sliding background indicator */
         .tab-slider {
-            @apply absolute top-0 left-0 w-0 h-full bg-violet-200 rounded-xl z-0;
+            @apply absolute top-0 left-0 w-0 h-full bg-lime-200 rounded-xl z-0;
 
-            box-shadow: 0 0 8px 1px rgba(230, 220, 255, 0.2);
+            box-shadow: 0 0 8px 1px rgba(190, 255, 175, 0.2);
             transition:
                 left 0.25s cubic-bezier(0.4, 0.1, 0, 1.05),
                 width 0.25s cubic-bezier(0.4, 0.1, 0, 1.05);
@@ -135,20 +142,20 @@ h2 {
 
         .tab-button {
             @apply py-1 px-3 rounded-xl text-lg cursor-pointer relative z-10
-                font-medium bg-transparent text-violet-200/90 transition-all duration-100 ease-out;
+                font-medium bg-transparent text-lime-200/90 transition-all duration-100 ease-out;
 
             &:hover:not(.active),
             &:focus:not(.active) {
-                @apply text-violet-200/100;
+                @apply text-lime-200/100;
 
-                text-shadow: 0 0 10px rgba(230, 220, 255, 0.4);
+                text-shadow: 0 0 10px rgba(190, 255, 175, 0.4);
             }
         }
         .tab-button.active {
-            @apply text-slate-950;
+            @apply text-stone-950;
         }
         /* .tab-button:not(.active):focus {
-            @apply bg-slate-200 outline-none;
+            @apply bg-stone-200 outline-none;
         } */
     }
 
@@ -160,9 +167,20 @@ h2 {
 
 #projects {
     .project-card {
-        @apply h-48 sm:h-56 p-3.5 py-3 sm:p-4.5 lg:py-3.5 relative flex-none flex
-            overflow-hidden rounded-2xl sm:rounded-3xl  bg-gray-950 text-slate-100 group-hover/tab:opacity-75
-            transition-all duration-150 ease-out;
+        @apply h-48 sm:h-56 p-3.5 py-3 sm:p-4.5 lg:py-3.5 relative flex-none flex lg:ml-0.75 cursor-default
+            overflow-hidden rounded-2xl sm:rounded-3xl  bg-stone-950 text-stone-100
+            transition-all duration-100 ease-out;
+
+        #img-gradient-overlay {
+            @apply absolute inset-0 pointer-events-none rounded-r-3xl
+                bg-linear-to-r from-stone-950 via-35% via-stone-950/83 to-transparent;
+            /* background: linear-gradient(
+                to right,
+                var(--color-stone-950) 0%,
+                var(--color-stone-950) 45%,
+                transparent 100%
+            ); */
+        }
 
         #content {
             @apply z-1 flex flex-col gap-0.5 justify-between;
@@ -181,9 +199,9 @@ h2 {
                 font-bold text-xl sm:text-2xl lg:text-xl text-nowrap;
 
             a {
-                @apply h-fit w-fit p-1 px-2.5 sm:p-1.5 sm:px-3 rounded-xl opacity-0 scale-75 cursor-pointer
+                @apply h-fit w-fit p-1 px-2.5 sm:p-1.5 sm:px-3 rounded-xl bg-lime-200 opacity-0 scale-75 cursor-pointer
                     transition-all duration-100 ease-out
-                    group-hover/card:scale-90 group-hover/card:opacity-85;
+                    group-hover/card:scale-90 group-hover/card:opacity-92;
 
                 box-shadow: 0 0 15px rgb(0, 0, 0, 1);
 
@@ -193,23 +211,24 @@ h2 {
             }
         }
 
+        box-shadow: 0 0 10px rgba(190, 255, 175, 0.15);
         /* box-shadow: 0 0 1px 1px rgba(255, 255, 255, 0.3), 0 0 4px rgba(255, 255, 255, 0.4); */
         /* box-shadow: inset 0 0 8px 0 rgba(0, 0, 0, 0.8), inset 0 -200px 100px -150px rgba(0, 0, 0, 1); */
     }
     .project-card:hover {
-        @apply opacity-100;
+        @apply opacity-100 lg:ml-0 lg:mr-0.75;
 
         box-shadow:
-            0 0 2px 2px rgba(230, 220, 255, 0.5),
-            0 0 8px rgba(230, 220, 255, 0.5);
+            0 0 2px 2px rgba(190, 255, 175, 0.2),
+            0 0 10px rgba(190, 255, 175, 0.3);
         /* box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.3), inset 0 -200px 100px -150px rgba(0, 0, 0, 1); */
     }
 }
 
 #experience {
     .experience-card {
-        @apply p-3.5 py-3 sm:p-4.5 sm:py-3.5 relative flex-none flex flex-col gap-2.5
-            overflow-hidden rounded-2xl sm:rounded-3xl text-slate-100 bg-gray-950 group-hover/tab:opacity-75
+        @apply p-3.5 py-3 sm:p-4.5 sm:py-3.5 relative flex-none flex flex-col gap-2.5 lg:ml-0.75 cursor-default
+            overflow-hidden rounded-2xl sm:rounded-3xl text-stone-100 bg-stone-950
             transition-all duration-100 ease-out;
 
         #logo {
@@ -221,42 +240,42 @@ h2 {
         #positions {
             @apply flex flex-col gap-3;
 
-            #timeline-dot {
-                @apply absolute left-0 top-2.5 size-1.5 rounded-full bg-violet-200/80
-                    glow-m1 group-hover/card:glow-m3
-                    group-hover/position:glow-l4 group-hover/position:bg-violet-200 
-                    group-hover/position:scale-150
-                    transition-all duration-150 ease-out;
-            }
-
-            #timeline-line {
-                @apply absolute left-0.5 top-2.5 -bottom-3 w-0.25 -mb-2.5 bg-violet-200/50
-                    glow-m1 group-hover/card:glow-m2 group-hover/position:glow-m3
+            .timeline-dot {
+                @apply absolute left-0 top-2.5 size-1.5 rounded-full bg-lime-200/80
+                    glow-m1 group-hover/card:glow-m2
+                    group-hover/position:glow-m3 group-hover/position:bg-lime-200 
+                    group-hover/position:scale-170
                     transition-all duration-100 ease-out;
             }
 
-            #content {
-                @apply pl-5 flex flex-col gap-0.75 scale-98 origin-left
-                        group-hover/position:scale-100
+            .timeline-line {
+                @apply absolute left-0.5 top-3 -bottom-3 w-0.5 -mb-2.5 bg-lime-200/50
+                    glow-m1 group-hover/card:glow-m2
+                    transition-all duration-100 ease-out;
+            }
+
+            .content {
+                @apply pl-5 flex flex-col gap-0.75 origin-left
+                        /* group-hover/position:scale-100 */
                         transition-all duration-100 ease-out;
 
                 h4 {
-                    @apply font-medium text-[15px] sm:text-lg text-violet-50
-                        group-hover/position:text-glow-m3
+                    @apply font-medium text-[15px] sm:text-lg text-lime-50
+                        group-hover/position:text-glow-s2
                         transition-all duration-100 ease-out;
                 }
 
                 p {
-                    @apply text-xs sm:text-sm text-slate-200/80
-                        group-hover/position:text-slate-50/90
+                    @apply text-xs sm:text-sm text-stone-200/80
+                        group-hover/position:text-stone-50/90
                         transition-all duration-100 ease-out;
                 }
 
-                #period {
+                .period {
                     @apply w-fit px-1.5 sm:px-1.75 py-0.5 sm:py-0.75
                         rounded-md sm:rounded-lg text-[10px] sm:text-[11px] font-bold font-jetbrains-mono
-                        bg-violet-100/15 text-violet-200
-                        group-hover/position:bg-violet-300/25
+                        bg-lime-100/15 text-lime-200
+                        group-hover/position:bg-lime-300/25
                         transition-all duration-100 ease-out;
                 }
             }
@@ -267,9 +286,9 @@ h2 {
                 font-bold text-xl sm:text-2xl lg:text-xl text-nowrap;
 
             a {
-                @apply h-fit w-fit p-1 px-2.5 sm:p-1.5 sm:px-3 rounded-xl opacity-0 scale-75 cursor-pointer
+                @apply h-fit w-fit p-1 px-2.5 sm:p-1.5 sm:px-3 rounded-xl bg-lime-200 opacity-0 scale-75 cursor-pointer
                     transition-all duration-100 ease-out
-                    group-hover/card:scale-90 group-hover/card:opacity-85;
+                    group-hover/card:scale-90 group-hover/card:opacity-92;
 
                 box-shadow: 0 0 15px rgb(0, 0, 0, 1);
 
@@ -278,14 +297,16 @@ h2 {
                 }
             }
         }
+
+        box-shadow: 0 0 10px rgba(190, 255, 175, 0.15);
     }
 
     .experience-card:hover {
-        @apply opacity-100;
+        @apply opacity-100 lg:ml-0 lg:mr-0.75;
 
         box-shadow:
-            0 0 2px 2px rgba(230, 220, 255, 0.4),
-            0 0 8px rgba(230, 220, 255, 0.4);
+            0 0 2px 2px rgba(190, 255, 175, 0.2),
+            0 0 10px rgba(190, 255, 175, 0.3);
     }
 
     .experience-card .position-item:last-child {
@@ -295,13 +316,13 @@ h2 {
 
 #education {
     .education-card {
-        @apply p-3.5 py-3 sm:p-4.5 sm:py-3.5 relative flex-none flex flex-col gap-2.5
-            overflow-hidden rounded-2xl sm:rounded-3xl text-slate-100 bg-gray-950 group-hover/tab:opacity-75
-            transition-all duration-150 ease-out;
+        @apply p-3.5 py-3 sm:p-4.5 sm:py-3.5 relative flex-none flex flex-col gap-2.5 lg:ml-0.75 cursor-default
+            overflow-hidden rounded-2xl sm:rounded-3xl text-stone-100 bg-stone-950 
+            transition-all duration-100 ease-out;
 
         #logo {
             @apply h-7.5 sm:h-9 p-0.25 rounded-lg bg-white opacity-92
-                group-hover/card:glow-m3 group-hover/card:opacity-100
+                group-hover/card:glow-m2 group-hover/card:opacity-100
                 transition-all duration-100 ease-out;
         }
 
@@ -310,26 +331,26 @@ h2 {
                     transition-all duration-100 ease-out;
 
             h4 {
-                @apply font-medium text-[15px] sm:text-lg text-violet-50
-                    group-hover/card:text-glow-m3
+                @apply font-medium text-[15px] sm:text-lg text-lime-50
+                    group-hover/card:text-glow-s2
                     transition-all duration-100 ease-out;
             }
 
             p {
-                @apply text-xs sm:text-sm text-slate-200/80
-                    group-hover/card:text-slate-50/90
+                @apply text-xs sm:text-sm text-stone-200/80
+                    group-hover/card:text-stone-50/90
                     transition-all duration-100 ease-out;
 
                 a {
-                    @apply text-violet-300/90 hover:underline;
+                    @apply text-lime-300/90 hover:underline;
                 }
             }
 
             #period {
                 @apply w-fit px-1.5 sm:px-1.75 py-0.5 sm:py-0.75
                     rounded-md sm:rounded-lg text-[10px] sm:text-[11px] font-bold font-jetbrains-mono
-                    bg-violet-100/15 text-violet-200
-                    group-hover/card:bg-violet-300/25
+                    bg-lime-100/15 text-lime-200
+                    group-hover/card:bg-lime-300/25
                     transition-all duration-100 ease-out;
             }
         }
@@ -339,9 +360,9 @@ h2 {
                 font-bold text-xl sm:text-2xl lg:text-xl text-nowrap;
 
             a {
-                @apply h-fit w-fit p-1 px-2.5 sm:p-1.5 sm:px-3 rounded-xl opacity-0 scale-75 cursor-pointer
+                @apply h-fit w-fit p-1 px-2.5 sm:p-1.5 sm:px-3 rounded-xl bg-lime-200 opacity-0 scale-75 cursor-pointer
                     transition-all duration-100 ease-out
-                    group-hover/card:scale-90 group-hover/card:opacity-85;
+                    group-hover/card:scale-90 group-hover/card:opacity-92;
 
                 box-shadow: 0 0 15px rgb(0, 0, 0, 1);
 
@@ -350,13 +371,15 @@ h2 {
                 }
             }
         }
+
+        box-shadow: 0 0 10px rgba(190, 255, 175, 0.15);
     }
     .education-card:hover {
-        @apply opacity-100;
+        @apply opacity-100 lg:ml-0 lg:mr-0.75;
 
         box-shadow:
-            0 0 2px 2px rgba(230, 220, 255, 0.4),
-            0 0 8px rgba(230, 220, 255, 0.4);
+            0 0 2px 2px rgba(190, 255, 175, 0.2),
+            0 0 10px rgba(190, 255, 175, 0.3);
     }
 }
 

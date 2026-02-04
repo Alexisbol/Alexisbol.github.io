@@ -6,15 +6,35 @@ export const categories = [
     { id: 'data-science', name: 'Data Science' },
     { id: 'systems', name: 'Systems' },
     { id: 'ai', name: 'AI' },
+    { id: 'robotics', name: 'Robotics' },
 ]
 
-type CategoryId = 'web-dev' | 'game-dev' | 'computer-graphics' | 'data-science' | 'systems' | 'ai'
+type CategoryId =
+    | 'web-dev'
+    | 'game-dev'
+    | 'computer-graphics'
+    | 'data-science'
+    | 'systems'
+    | 'ai'
+    | 'robotics'
 
 import type { ImageMetadata } from 'astro'
 
 //#region Media Imports
 
-// UE5 AI Playground (Simple Shooter)0
+// Rocket Landing with Robust & Nonlinear MPC
+import mpcAnim from '../assets/projects/MPC - nmpc animation.png'
+
+// Distributed Market-Based Task Allocation
+import mbtaSim from '../assets/projects/MBTA - sim w logs.jpg'
+
+// Thymio Global-Local Robot Navigation
+import glrnDemo from '../assets/projects/GLRN - demo viz.jpg'
+
+// Scene Investigation Agent
+import siaLogs from '../assets/projects/SIA - output logs ChooseNextCommand cropped.png'
+
+// UE5 AI Playground (Simple Shooter)
 import ssMultiple from '../assets/projects/SS - multiple enemies fight.jpg'
 import ssJump from '../assets/projects/SS - jumping shot.jpg'
 import ssLose from '../assets/projects/SS - lose screen.jpg'
@@ -88,7 +108,7 @@ import ggGameOver from '../assets/projects/GG - game over.png'
 export interface ProjectProps {
     title: string // Title of the project
     summary: string // Short (~250-300 character) summary of the project, shown on the project card
-    description: string // Description of the project
+    description?: string // Description of the project (deprecated, use summary instead)
     fromDate: string // Start date of the project, formatted as `Mon YYYY`
     toDate?: string // End date of the project, formatted as `Mon YYYY`, optional (for ongoing projects)
     categories: CategoryId[] // Categories the project belongs to, e.g., ['web-dev', 'data-science'] (at least one required)
@@ -106,16 +126,55 @@ export interface ProjectProps {
 
 export const projects: ProjectProps[] = [
     {
-        title: '!Scene Investigation Agent',
+        title: 'Rocket Landing with Robust & Nonlinear MPC',
+        summary:
+            'A control project demonstrating autonomous rocket landing using Robust and Nonlinear Model Predictive Control (MPC). Engineered a 12-state NMPC for propulsive landing and Robust Tube MPC for vertical descent to guarantee collision avoidance under stochastic disturbances.',
+        fromDate: 'Dec 2025',
+        toDate: 'Jan 2026',
+        categories: ['robotics', 'systems'],
+        technologies: ['python', 'cvxpy', 'casadi'],
+        repoUrl: 'https://github.com/tancredelg/MPC-Course-EPFL',
+        coverMedia: 0,
+        media: [
+            { type: 'image', src: mpcAnim, alt: 'Rocket Landing with MPC animation screenshot' },
+        ],
+    },
+    {
+        title: 'Distributed Market-Based Task Allocation',
+        summary:
+            'A decentralized auction system for heterogeneous swarms using market-based algorithms to coordinate and divide labor. Included a gossip protocol for local consensus and a multi-step task scheduler (TSP approximation) to optimize throughput under battery constraints in a Webots simulation.',
+        fromDate: 'Nov 2025',
+        toDate: 'Dec 2025',
+        categories: ['robotics', 'systems'],
+        technologies: ['cpp', 'webots'],
+        repoUrl: 'https://github.com/lukasfalk/DIS-Market-based-task-allocation',
+        coverMedia: 0,
+        media: [{ type: 'image', src: mbtaSim, alt: 'Swarm Task Allocation in Webots' }],
+    },
+    {
+        title: 'Global-Local Robot Navigation',
+        summary:
+            'An autonomous navigation stack for a Thymio robot featuring down-cam global navigation/planning, Braitenberg local avoidance, and EKF state estimation. Implemented a hierarchical controller to switch between navigation and obstacle avoidance behaviors, effectively managing static and dynamic obstacles.',
+        fromDate: 'Nov 2025',
+        toDate: 'Nov 2025',
+        categories: ['robotics'],
+        technologies: ['python', 'opencv', 'thymio'],
+        repoUrl: 'https://github.com/tancredelg/thymio-global-local-navigation',
+        coverMedia: 0,
+        media: [{ type: 'image', src: glrnDemo, alt: 'Thymio Robot Navigation' }],
+    },
+    {
+        title: 'Scene Investigation Agent',
         summary: `An agentic framework for autonomous, semantic scene understanding. This project leverages LLMs to guide an agent through an interactive, simulated environment (ALFWorld) using text-based actions, gathering clues to infer the inhabitant's occupation via Bayesian-style belief updates.`,
-        description: `N/A`,
         fromDate: 'Apr 2025',
         toDate: 'Apr 2025',
         categories: ['ai'],
         technologies: ['python', 'dspy', 'gemini', 'ollama', 'alfworld'],
         repoUrl: 'https://github.com/tancredelg/scene-investigation-agent',
         coverMedia: 0,
-        media: [{ type: 'image', src: '', alt: 'img1 missing img1 missing img1 missing ' }],
+        media: [
+            { type: 'image', src: siaLogs, alt: 'Output logs from the Scene Investigation Agent' },
+        ],
     },
     {
         title: 'UE5 AI Playground',

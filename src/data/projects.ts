@@ -126,7 +126,7 @@ export interface ProjectProps {
 
 export const projects: ProjectProps[] = [
     {
-        title: 'Rocket Landing with Robust & Nonlinear MPC',
+        title: 'Rocket Landing with MPC',
         summary:
             'A control project demonstrating autonomous rocket landing using Robust and Nonlinear Model Predictive Control (MPC). Engineered a 12-state NMPC for propulsive landing and Robust Tube MPC for vertical descent to guarantee collision avoidance under stochastic disturbances.',
         fromDate: 'Dec 2025',
@@ -140,7 +140,7 @@ export const projects: ProjectProps[] = [
         ],
     },
     {
-        title: 'Distributed Market-Based Task Allocation',
+        title: 'Market-Based Task Allocation',
         summary:
             'A decentralized auction system for heterogeneous swarms using market-based algorithms to coordinate and divide labor. Included a gossip protocol for local consensus and a multi-step task scheduler (TSP approximation) to optimize throughput under battery constraints in a Webots simulation.',
         fromDate: 'Nov 2025',
@@ -152,7 +152,7 @@ export const projects: ProjectProps[] = [
         media: [{ type: 'image', src: mbtaSim, alt: 'Swarm Task Allocation in Webots' }],
     },
     {
-        title: 'Global-Local Robot Navigation',
+        title: 'Thymio Navigation Stack',
         summary:
             'An autonomous navigation stack for a Thymio robot featuring down-cam global navigation/planning, Braitenberg local avoidance, and EKF state estimation. Implemented a hierarchical controller to switch between navigation and obstacle avoidance behaviors, effectively managing static and dynamic obstacles.',
         fromDate: 'Nov 2025',

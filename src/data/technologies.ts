@@ -22,6 +22,9 @@ import zookeeperLogo from '../assets/logos-icons/apache-zookeeper-logo.png'
 import openaiLogo from '../assets/logos-icons/OpenAI-white-monoblossom.svg'
 import opencvLogo from '../assets/logos-icons/opencv-logo.webp'
 import modernglLogo from '../assets/logos-icons/moderngl-logo.png'
+import ollamaLogo from '../assets/logos-icons/ollama-logo.png'
+import geminiLogo from '../assets/logos-icons/gemini-logo.svg'
+import dspyLogo from '../assets/logos-icons/dspy-logo.png'
 
 export const technologies: Record<string, TechProps> = {
     python: {
@@ -110,6 +113,26 @@ export const technologies: Record<string, TechProps> = {
         title: 'ModernGL',
         url: 'https://moderngl.readthedocs.io/',
         logo: { type: 'img', value: modernglLogo },
+    },
+    alfworld: {
+        title: 'ALFWorld',
+        url: 'https://alfworld.github.io/',
+        logo: { type: 'html', value: 'ALFWorld' },
+    },
+    ollama: {
+        title: 'Ollama',
+        url: 'https://ollama.com/',
+        logo: { type: 'img', value: ollamaLogo },
+    },
+    gemini: {
+        title: 'Gemini',
+        url: 'https://ai.google.dev/gemini-api/docs/',
+        logo: { type: 'svg', value: geminiLogo },
+    },
+    dspy: {
+        title: 'DSPy',
+        url: 'https://dspy.ai/',
+        logo: { type: 'img', value: dspyLogo },
     },
 }
 

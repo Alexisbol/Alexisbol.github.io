@@ -3,14 +3,18 @@ export const categories = [
     { id: 'web-dev', name: 'Web Dev' },
     { id: 'game-dev', name: 'Game Dev' },
     { id: 'computer-graphics', name: 'Graphics' },
-    { id: 'data-science', name: 'Data Science & AI' },
+    { id: 'data-science', name: 'Data Science' },
     { id: 'systems', name: 'Systems' },
+    { id: 'ai', name: 'AI' },
 ]
 
-type CategoryId = 'web-dev' | 'game-dev' | 'computer-graphics' | 'data-science' | 'systems'
+type CategoryId = 'web-dev' | 'game-dev' | 'computer-graphics' | 'data-science' | 'systems' | 'ai'
 
 import type { ImageMetadata } from 'astro'
 
+//#region Media Imports
+
+// UE5 AI Playground (Simple Shooter)0
 import ssMultiple from '../assets/projects/SS - multiple enemies fight.jpg'
 import ssJump from '../assets/projects/SS - jumping shot.jpg'
 import ssLose from '../assets/projects/SS - lose screen.jpg'
@@ -18,37 +22,46 @@ import ssBehavior from '../assets/projects/SS - behaviour tree cropped.png'
 import ssAnim from '../assets/projects/SS - anim state machines labelled.png'
 import ssBehaviorVid from '../assets/projects/SS - behaviour demo.mp4'
 
+// Help Help
 import hhLanding from '../assets/projects/HH - landing.png'
 import hhStart from '../assets/projects/HH - start recording.png'
 import hhStop from '../assets/projects/HH - stop recording.png'
 import hhSummary from '../assets/projects/HH - response summary.png'
 
+// McGill Degree Planner
 import mdpTerm from '../assets/projects/MDP - term select.png'
 import mdpAdd from '../assets/projects/MDP - course add.png'
 import mdpRemove from '../assets/projects/MDP - course remove NEW.png'
 import mdpSetGrade from '../assets/projects/MDP - course set grade.png'
 
+// Distributed Computing Platform
 import dcpFull from '../assets/projects/DCP - full view 1.png'
 import dcpMgr from '../assets/projects/DCP - manager cropped.png'
 import dcpWorker1 from '../assets/projects/DCP - worker logs 1.png'
 import dcpWorker2 from '../assets/projects/DCP - worker logs 2.png'
 
+// Cartographe
 import cartoFrance from '../assets/projects/Cartographe - France hovered (cities hidden).png'
 import cartoSing from '../assets/projects/Cartographe - Singapore hovered (cities rank 0-3).png'
 import cartoPanama from '../assets/projects/Cartographe - Panama City hovered (all cities).png'
 import cartoGreece from '../assets/projects/Cartographe - Greece mesh.png'
 
+// 2D Fluid Simulation
 import efsScreenshot from '../assets/projects/EFS - screenshot cropped.png'
 import efsVid from '../assets/projects/EFS - sink source compressed.mp4'
 
+// Unix-like File System
 import sfsCodeScreenshot from '../assets/projects/SFS - sfs_write() screenshot.png'
 
+// KotFM Movie Coverage Analysis
 import kfmaReportScreenshot from '../assets/projects/KFMA - report screenshot.png'
 
+// Mars Marine
 import mmHealth from '../assets/projects/MM - health pack.png'
 import mmReturn from '../assets/projects/MM - return to play area.png'
 import mmDead from '../assets/projects/MM - dead.png'
 
+// Storm the Stronghold
 import stsMid from '../assets/projects/STS - mid game fighting enemies with sword.png'
 import stsPortal from '../assets/projects/STS - in game entering portal room.png'
 import stsArrow from '../assets/projects/STS - in game shooting arrow.png'
@@ -57,6 +70,7 @@ import stsDeath from '../assets/projects/STS - death screen.png'
 import stsLoad from '../assets/projects/STS - load save screen.png'
 import stsVid from '../assets/projects/STS - tests video compressed.mp4'
 
+// Dungeon Escape
 import deMenu from '../assets/projects/DE - menu screen.png'
 import deJump from '../assets/projects/DE - jump shot.png'
 import deRising from '../assets/projects/DE - rising water.png'
@@ -64,9 +78,12 @@ import deRun from '../assets/projects/DE - running in tunnel.png'
 import deGameOver from '../assets/projects/DE - game over.png'
 import deEnd from '../assets/projects/DE - end screen.png'
 
+// Glitch Garden
 import ggMid from '../assets/projects/GG - mid level.png'
 import ggComplete from '../assets/projects/GG - level complete.png'
 import ggGameOver from '../assets/projects/GG - game over.png'
+
+//#endregion
 
 export interface ProjectProps {
     title: string // Title of the project
@@ -88,6 +105,18 @@ export interface ProjectProps {
 }
 
 export const projects: ProjectProps[] = [
+    {
+        title: '!Scene Investigation Agent',
+        summary: `An agentic framework for autonomous, semantic scene understanding. This project leverages LLMs to guide an agent through an interactive, simulated environment (ALFWorld) using text-based actions, gathering clues to infer the inhabitant's occupation via Bayesian-style belief updates.`,
+        description: `N/A`,
+        fromDate: 'Apr 2025',
+        toDate: 'Apr 2025',
+        categories: ['ai'],
+        technologies: ['python', 'dspy', 'gemini', 'ollama', 'alfworld'],
+        repoUrl: 'https://github.com/tancredelg/scene-investigation-agent',
+        coverMedia: 0,
+        media: [{ type: 'image', src: '', alt: 'img1 missing img1 missing img1 missing ' }],
+    },
     {
         title: 'UE5 AI Playground',
         summary:

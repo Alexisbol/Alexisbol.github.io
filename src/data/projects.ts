@@ -133,7 +133,7 @@ export const projects: ProjectProps[] = [
         toDate: 'Jan 2026',
         categories: ['robotics', 'systems'],
         technologies: ['python', 'cvxpy', 'casadi'],
-        repoUrl: 'https://github.com/tancredelg/MPC-Course-EPFL',
+        repoUrl: 'https://github.com/tancredelg/MPC-Course-EPFL/tree/main/project#readme',
         coverMedia: 0,
         media: [
             { type: 'image', src: mpcAnim, alt: 'Rocket Landing with MPC animation screenshot' },

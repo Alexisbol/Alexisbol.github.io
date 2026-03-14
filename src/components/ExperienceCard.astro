@@ -26,7 +26,13 @@ function formatDateRange(fromDate: string, toDate?: string): string {
                     if (company.logo.type === 'svg' && typeof company.logo.value === 'function') {
                         // Imported SVG as component
                         const LogoComponent = company.logo.value
-                        return <LogoComponent id="logo" alt={company.name + ' logo'} />
+                        return (
+                            <LogoComponent
+                                id="logo"
+                                className="w-fit"
+                                alt={company.name + ' logo'}
+                            />
+                        )
                     }
                     if (company.logo.type === 'html' && typeof company.logo.value === 'string') {
                         // Raw HTML string
@@ -35,7 +41,7 @@ function formatDateRange(fromDate: string, toDate?: string): string {
                     return null
                 })()
         }
-        {company.name}
+        <span class="flex-1">{company.name}</span>
     </h3>
     <div id="positions">
         {

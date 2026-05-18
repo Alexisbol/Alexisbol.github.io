@@ -8,6 +8,6 @@ export default defineConfig({
     vite: {
         plugins: [tailwindcss()],
     },
-    site: 'https://tancredelg.github.io',
+    site: 'https://Alexisbol.github.io',
     base: '/',
 })

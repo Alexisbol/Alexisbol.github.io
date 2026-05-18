@@ -12,15 +12,31 @@ export interface ExperienceProps {
         description: string
         fromDate: string // Start date of the position, formatted as `Mon YYYY`
         toDate?: string // End date of the position, formatted as `Mon YYYY`, optional (for ongoing positions)
-        technologies?: string[] // Technologies used in the position, e.g., ['js', 'react', 'tailwind', 'unreal']
+        technologies?: string[] // Technologies used in the position, e.g., ['python', 'ros2']
     }[]
 }
 
-import mcgillRoboticsLogo from '../assets/logos-icons/mcgill-robotics-logo.png'
-import lisLogo from '../assets/logos-icons/LIS-logo.png'
 import epflAITeamLogo from '../assets/logos-icons/epfl-ai-team-logo.svg'
+import mathislabLogo from '../assets/logos-icons/mathislab-logo.webp'
+import isirLogo from '../assets/logos-icons/isir-logo.png'
+import omniLogo from '../assets/logos-icons/omni-logo.svg'
 
 export const experiences: ExperienceProps[] = [
+    {
+        company: {
+            name: 'Mathis Group – EPFL',
+            url: 'https://www.mathislab.org/',
+            logo: { type: 'img', value: mathislabLogo },
+        },
+        positions: [
+            {
+                title: 'Semester Project',
+                description: `Research laboratory of EPFL specialising in computational neuroscience and machine learning. Trained an RL agent to play table tennis using complex musculoskeletal models within the MyoSuite and MuJoCo frameworks. Implemented and built upon research paper methodologies to achieve SOTA performance. Transitioned the implementation to MuJoCo Warp, enabling parallel simulation on GPU using the mjlab framework.`,
+                fromDate: 'Feb 2026',
+                toDate: 'Jun 2026',
+            },
+        ],
+    },
     {
         company: {
             name: 'EPFL AI Team',
@@ -32,63 +48,40 @@ export const experiences: ExperienceProps[] = [
         },
         positions: [
             {
-                title: 'Machine Learning Engineer, PAWS Project',
-                // PAWS = Jumping policy for quadrupedal robot (ANYmal) via RL in Isaac Lab
-                description: `Developing a jumping control policy for the ANYmal quadrupedal robot using reinforcement learning in NVIDIA Isaac Lab. The project focuses on sim-to-real transfer, leveraging domain randomization and system identification to ensure robust performance on real hardware.`,
-                fromDate: 'Mar 2026',
-            },
-        ],
-    },
-    {
-        company: {
-            name: 'Laboratory of Intelligent Systems @ EPFL',
-            url: 'https://lis.epfl.ch',
-            logo: {
-                type: 'img',
-                value: lisLogo,
-            },
-        },
-        positions: [
-            {
-                title: 'Graduate Student Researcher',
-                // Highlights: Embedded, Real-time, Deep Learning, Hardware constraints
-                description: `Designing a lightweight deep learning pipeline for dense depth estimation on raw fisheye imagery. Targeting real-time inference on embedded drone hardware (NVIDIA Jetson) by bypassing standard rectification latency and artifacts.`,
+                title: 'RL Engineer, PAWS Project',
+                description: `Developed quadruped locomotion policies with reinforcement learning using NVIDIA Isaac Lab. Worked on sim-to-sim and sim-to-real transfer to deploy the learned policy on the Unitree Go2 quadruped robot.`,
                 fromDate: 'Feb 2026',
-                // toDate: 'May 2026',
+                toDate: 'Jun 2026',
             },
         ],
     },
     {
         company: {
-            name: 'McGill Robotics',
-            url: 'https://mcgillrobotics.com/auv',
-            logo: {
-                type: 'img',
-                value: mcgillRoboticsLogo,
-            },
+            name: 'Institute of Intelligent Systems and Robotics (ISIR)',
+            url: 'https://www.isir.upmc.fr/',
+            logo: { type: 'img', value: isirLogo },
         },
         positions: [
             {
-                title: 'Software Engineer, AUV Project',
-                // Highlights: Optimization, Docker, Migration
-                description: `Fully autonomous underwater vehicle for the RoboSub competition. Worked on performance optimization of the AUV simulation (Unity), contributed to a critical stack migration from ROS 1 to ROS 2 and led a documentation overhaul to accelerate developer onboarding.`,
-                fromDate: 'Sep 2024',
-                toDate: 'Jun 2025',
+                title: 'Research Intern',
+                description: `Research laboratory of Sorbonne University / CNRS specialising in robot learning and human-robot interaction. Developed IGM/DGM geometric models for a parallel robot and validated them against physical measurements. Designed a GUI for trajectory planning and execution. Implemented ROS2 low-level motor control over CAN bus, and integrated the robot with a motion capture system for closed-loop position feedback.`,
+                fromDate: 'Apr 2025',
+                toDate: 'Aug 2025',
             },
         ],
     },
     {
         company: {
-            name: 'McGill Computational Genomics Lab',
-            url: 'https://cs.mcgill.ca/~blanchem',
+            name: 'Omni',
+            url: 'https://www.omni.community/',
+            logo: { type: 'img', value: omniLogo },
         },
         positions: [
             {
-                title: 'Honours Research Project',
-                // Highlights: PyTorch, Generative AI, Benchmarking
-                description: `Investigated Generative Flow Matching models, specifically Acceleration Flow Matching (AFM). Extended a PyTorch codebase to benchmark AFM against standard baselines, analyzing performance gains in modeling higher-order dynamics.`,
-                fromDate: 'Jan 2025',
-                toDate: 'Apr 2025',
+                title: 'Intern',
+                description: `Start-up dedicated to the mobility of disabled people using electric devices. Prepared, repaired, and reconditioned electric scooters. Created educational and technical videos for customers and technicians.`,
+                fromDate: 'Jun 2024',
+                toDate: 'Jul 2024',
             },
         ],
     },

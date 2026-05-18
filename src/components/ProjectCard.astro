@@ -16,46 +16,78 @@ const {
     coverMedia,
     media = [],
 } = Astro.props as ProjectProps
+
+const indices = Array.isArray(coverMedia) ? coverMedia : [coverMedia]
+const validIndices = indices.filter((i) => i >= 0 && i < media.length)
+const isCarousel = validIndices.length > 1
 ---
 
-<div class="project-card group/card">
+<div class="project-card group/card" data-card>
     {
-        media.length > 0 && coverMedia >= 0 && coverMedia < media.length && (
-            <div class="absolute top-0 bottom-0 right-0 pointer-events-none z-0">
-                {(() => {
-                    const item = media[coverMedia]
-                    const src = typeof item.src === 'string' ? item.src : (item.src?.src ?? '')
-                    if (item.type === 'image') {
+        validIndices.length > 0 && (
+            <div class="absolute top-0 bottom-0 right-0 pointer-events-none z-0 overflow-hidden transition-[width] duration-300 ease-out" data-carousel>
+                <div class="relative h-full">
+                    {validIndices.map((idx, slideIdx) => {
+                        const item = media[idx]
+                        const src = typeof item.src === 'string' ? item.src : (item.src?.src ?? '')
+                        const wrapClass = `${slideIdx === 0 ? 'relative' : 'absolute inset-0 opacity-0'} h-full pointer-events-none transition-opacity duration-300`
+                        const mediaClass = 'h-full w-auto select-none pointer-events-none'
                         return (
-                            <img
-                                src={src}
-                                alt={item.alt ?? title}
-                                class="h-full w-auto object-cover select-none pointer-events-none"
-                            />
+                            <div class={wrapClass} data-slide>
+                                {item.type === 'image' ? (
+                                    <img src={src} alt={item.alt ?? title} class={mediaClass} />
+                                ) : (
+                                    <video
+                                        src={src}
+                                        class={mediaClass}
+                                        autoplay
+                                        muted
+                                        loop
+                                        playsinline
+                                    />
+                                )}
+                            </div>
                         )
-                    }
-                    if (item.type === 'video') {
-                        return (
-                            <video
-                                src={src}
-                                class="h-full w-auto object-cover select-none pointer-events-none"
-                                autoplay
-                                muted
-                                loop
-                                playsinline
-                            />
-                        )
-                    }
-                    return null
-                })()}
+                    })}
+                </div>
 
                 <div id="img-gradient-overlay" aria-hidden="true" />
             </div>
         )
     }
+
+    {
+        isCarousel && (
+            <>
+                <button
+                    class="carousel-prev pointer-events-auto absolute z-10
+                           right-10 top-1/2 -translate-y-1/2
+                           w-7 h-7 rounded-lg bg-black/50 text-white text-lg leading-none
+                           flex items-center justify-center
+                           opacity-70 group-hover/card:opacity-100 hover:bg-black/75
+                           transition-all duration-100 ease-out"
+                    aria-label="Previous image"
+                >
+                    ‹
+                </button>
+                <button
+                    class="carousel-next pointer-events-auto absolute z-10
+                           right-2 top-1/2 -translate-y-1/2
+                           w-7 h-7 rounded-lg bg-black/50 text-white text-lg leading-none
+                           flex items-center justify-center
+                           opacity-70 group-hover/card:opacity-100 hover:bg-black/75
+                           transition-all duration-100 ease-out"
+                    aria-label="Next image"
+                >
+                    ›
+                </button>
+            </>
+        )
+    }
+
     <div id="content">
         <div
-            class="group-hover/card:text-white/100 text-white/85 transition-all duration-100 ease-out"
+            class="group-hover/card:text-on-surface text-on-surface/85 transition-all duration-100 ease-out"
         >
             <h4 class="font-medium text-xl sm:text-3xl lg:text-2xl">{title}</h4>
             <p class="mt-0.5 sm:mt-1.5 lg:mt-0.5 sm:w-2/3 text-xs sm:text-base lg:text-sm">
@@ -66,18 +98,6 @@ const {
     </div>
 
     <div id="urls">
-        {
-            !repoUrl && !postUrl && !liveUrl && (
-                <span
-                    title="Feel free to contact me for more information"
-                    class="p-1 px-2 rounded-lg text-sm bg-black/92 text-stone-300
-                    group-hover/card:opacity-100
-                    transition-all duration-100 ease-out"
-                >
-                    No links available, sorry!
-                </span>
-            )
-        }
         {
             repoUrl && (
                 <a href={repoUrl} target="_blank" class="bg-white text-neutral-900">
@@ -101,3 +121,40 @@ const {
         }
     </div>
 </div>
+
+<script>
+    document.querySelectorAll('[data-card]').forEach((card) => {
+        const carousel = card.querySelector('[data-carousel]') as HTMLElement | null
+        const slides = Array.from(card.querySelectorAll('[data-slide]')) as HTMLElement[]
+        if (slides.length <= 1) return
+
+        let current = 0
+
+        // Lock initial width so CSS transition has an explicit value to animate from
+        if (carousel) carousel.style.width = carousel.offsetWidth + 'px'
+
+        const naturalDisplayWidth = (slide: HTMLElement) => {
+            const img = slide.querySelector('img') as HTMLImageElement | null
+            if (!img || !carousel || !img.naturalWidth || !img.naturalHeight) return null
+            return carousel.offsetHeight * img.naturalWidth / img.naturalHeight
+        }
+
+        const showSlide = (idx: number) => {
+            const prev = slides[current]
+            current = ((idx % slides.length) + slides.length) % slides.length
+            const next = slides[current]
+
+            prev.classList.add('opacity-0', 'absolute', 'inset-0')
+            prev.classList.remove('relative')
+
+            next.classList.remove('opacity-0', 'absolute', 'inset-0')
+            next.classList.add('relative')
+
+            const w = naturalDisplayWidth(next)
+            if (w && carousel) carousel.style.width = w + 'px'
+        }
+
+        card.querySelector('.carousel-prev')?.addEventListener('click', () => showSlide(current - 1))
+        card.querySelector('.carousel-next')?.addEventListener('click', () => showSlide(current + 1))
+    })
+</script>

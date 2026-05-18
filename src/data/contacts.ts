@@ -13,24 +13,24 @@ import emailIcon from '../assets/logos-icons/mailto.svg'
 
 export const contacts: ContactProps[] = [
     {
-        url: 'https://github.com/tancredelg',
-        shorthand: '/tancredelg',
+        url: 'https://github.com/Alexisbol',
+        shorthand: '/Alexisbol',
         logo: {
             type: 'svg',
             value: githubLogo,
         },
     },
     {
-        url: 'https://www.linkedin.com/in/tancredelg',
-        shorthand: '/tancredelg',
+        url: 'https://www.linkedin.com/in/alexis-bollack',
+        shorthand: '/alexis-bollack',
         logo: {
             type: 'svg',
             value: linkedinLogo,
         },
     },
     {
-        url: 'mailto: tancredelg@proton.me',
-        shorthand: 'tancredelg@proton.me',
+        url: 'mailto:alexis.bollack@gmail.com',
+        shorthand: 'alexis.bollack@gmail.com',
         logo: {
             type: 'svg',
             value: emailIcon,

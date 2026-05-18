@@ -15,12 +15,12 @@ import { contacts } from '../data/contacts'
         <div class="lg:basis-[34.5rem] flex flex-col items-stretch gap-5">
             <div class="flex flex-col sm:flex-row lg:flex-col gap-3.5 sm:gap-5 lg:gap-3.5">
                 <div
-                    class="flex-2 flex gap-3 items-center justify-start p-3 rounded-3xl bg-stone-950"
+                    class="flex-2 flex gap-3 items-center justify-start p-3 rounded-3xl bg-surface"
                 >
                     <div class="w-21 sm:w-23 aspect-[7/8] bg-white rounded-2xl overflow-hidden">
                         <img
                             src={profilePic.src}
-                            alt="Portrait of Tancrède Lamort de Gail"
+                            alt="Portrait of Alexis Bollack"
                             class="w-full h-full object-cover"
                         />
                     </div>
@@ -31,11 +31,11 @@ import { contacts } from '../data/contacts'
                         <span class="break-words whitespace-normal text-base sm:text-lg mb-1"
                             >👋 Hey, I'm</span
                         >
-                        <span class="break-words whitespace-normal text-lime-200 text-glow-s">
-                            Tancrède
+                        <span class="break-words whitespace-normal text-accent text-glow-s">
+                            Alexis
                         </span>
-                        <span class="whitespace-normal text-lime-200 text-glow-s">
-                            Lamort de Gail
+                        <span class="whitespace-normal text-accent text-glow-s">
+                            Bollack
                         </span>
                     </div>
                 </div>
@@ -48,31 +48,23 @@ import { contacts } from '../data/contacts'
             </div>
             <div class="flex flex-col gap-3 overflow-auto max-h-[40vh] lg:max-h-full">
                 <p>
-                    Hello! I'm Tancrède, a computer scientist and robotics engineer-in-training.
-                    I've always been captivated by the process of turning complex ideas into
-                    tangible reality, a passion that took me from a First-Class Honours CS degree at
-                    McGill to my current MSc in Robotics at EPFL, where I'm focused on building the
-                    brains behind intelligent machines.
+                    Hi! I'm Alexis, a Robotics Engineering student pursuing a double degree between
+                    EPFL and École Centrale de Nantes. I specialize in the intersection of
+                    Reinforcement Learning and autonomous systems — from training legged robot
+                    locomotion policies to building low-level robot control pipelines.
                 </p>
                 <p>
-                    From programming autonomous robots to creating practical, robust software
-                    systems, or spending sleepless nights designing and developing games, I'm
-                    blending technical skill with creative expression in all kinds of projects. And
-                    even outside of projects I'm learning non-stop. You'll find me lost in the
-                    trenches of AI/ML research, exploring novel open-source projects, or binging the
-                    latest talks, blogs & videos on everything from control theory to systems design
-                    - chasing my curiosity down any rabbit hole I can find to stay on the cutting
-                    edge.
+                    My hands-on experience spans RL agent training with Isaac Lab and MuJoCo,
+                    ROS2-based robot control, and research in parallel robot kinematics and
+                    computational neuroscience. I'm passionate about closing the sim-to-real gap:
+                    getting policies trained in simulation to actually work on physical hardware.
+                    Outside of robotics, I'm an avid volleyball player, half-marathon runner, and
+                    former competitive table tennis player.
                 </p>
                 <p>
-                    My goal is to build resilient, impactful systems, whether they're navigating the
-                    physical world or processing massive datasets. Looking ahead, I am eager to
-                    translate my academic background into industry experience and am actively
-                    seeking a challenging 6-month internship beginning in late Summer/Fall 2026. I'm
-                    particularly excited by opportunities in ML engineering, robotics, and applied
-                    AI research. I'm always eager to connect with others who share a fascination for
-                    this fast-moving field - whether you want to discuss the latest research,
-                    exchange ideas, or just say hi, please feel free to reach out.
+                    I'm actively seeking a <strong>6-month industry internship in robotics starting
+                    September 2026</strong>. If you're working on legged robots, embodied AI, or
+                    autonomous systems, I'd love to connect — feel free to reach out!
                 </p>
             </div>
         </div>

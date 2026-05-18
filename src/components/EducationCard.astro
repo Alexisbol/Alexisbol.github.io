@@ -55,7 +55,7 @@ function formatDateRange(fromDate: string, toDate?: string): string {
 
     <div id="urls">
         {
-            institution.url ? (
+            institution.url && (
                 <a
                     href={institution.url}
                     target="_blank"
@@ -70,15 +70,6 @@ function formatDateRange(fromDate: string, toDate?: string): string {
                         <path d="M128,63.999444 L128,106.666444 L42.6666667,106.666667 L42.6666667,320 L256,320 L256,234.666444 L298.666,234.666444 L298.666667,362.666667 L4.26325641e-14,362.666667 L4.26325641e-14,64 L128,63.999444 Z M362.666667,1.42108547e-14 L362.666667,170.666667 L320,170.666667 L320,72.835 L143.084945,249.751611 L112.915055,219.581722 L289.83,42.666 L192,42.6666667 L192,1.42108547e-14 L362.666667,1.42108547e-14 Z" />
                     </svg>
                 </a>
-            ) : (
-                <span
-                    title="Feel free to contact me for more information"
-                    class="p-1 px-2 rounded-lg bg-black/85 text-gray-300/85 text-sm
-                    group-hover/card:opacity-100
-                    transition-all duration-100 ease-out"
-                >
-                    No links available, sorry!
-                </span>
             )
         }
     </div>

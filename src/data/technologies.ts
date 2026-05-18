@@ -16,12 +16,9 @@ import jsLogo from '../assets/logos-icons/js-logo.svg'
 import unrealLogo from '../assets/logos-icons/unreal-engine-logo.svg'
 import unityLogo from '../assets/logos-icons/unity-logo.svg'
 import flaskLogo from '../assets/logos-icons/flask-logo-cropped.png'
-import sqliteLogo from '../assets/logos-icons/sqlite-logo.svg'
-import tailwindLogo from '../assets/logos-icons/tailwindcss-mark.d52e9897.svg'
-import zookeeperLogo from '../assets/logos-icons/apache-zookeeper-logo.png'
+
 import openaiLogo from '../assets/logos-icons/OpenAI-white-monoblossom.svg'
 import opencvLogo from '../assets/logos-icons/opencv-logo.webp'
-import modernglLogo from '../assets/logos-icons/moderngl-logo.png'
 import ollamaLogo from '../assets/logos-icons/ollama-logo.png'
 import geminiLogo from '../assets/logos-icons/gemini-logo.svg'
 import dspyLogo from '../assets/logos-icons/dspy-logo.png'
@@ -29,6 +26,9 @@ import cvxpyLogo from '../assets/logos-icons/cvxpy-logo-light.png'
 import casadiLogo from '../assets/logos-icons/casadi-logo-light.svg'
 import webotsLogo from '../assets/logos-icons/webots-logo.png'
 import thymioLogo from '../assets/logos-icons/thymio-logo.png'
+import arduinoLogo from '../assets/logos-icons/arduino-logo.svg'
+import printingIcon from '../assets/logos-icons/3dprinting-icon.svg'
+import lerobotLogo from '../assets/projects/lerobot_image.webp'
 
 export const technologies: Record<string, TechProps> = {
     python: {
@@ -91,17 +91,17 @@ export const technologies: Record<string, TechProps> = {
     sqlite: {
         title: 'SQLite',
         url: 'https://sqlite.org/',
-        logo: { type: 'svg', value: sqliteLogo },
+        logo: { type: 'html', value: `<div class="font-bold h-full flex items-center justify-center text-xs">SQLite</div>` },
     },
     tailwind: {
         title: 'Tailwind CSS',
         url: 'https://tailwindcss.com/',
-        logo: { type: 'svg', value: tailwindLogo },
+        logo: { type: 'html', value: `<div class="font-bold h-full flex items-center justify-center text-xs">Tailwind</div>` },
     },
     zookeeper: {
         title: 'Apache ZooKeeper',
         url: 'https://zookeeper.apache.org/',
-        logo: { type: 'img', value: zookeeperLogo },
+        logo: { type: 'html', value: `<div class="font-bold h-full flex items-center justify-center text-xs leading-tight text-center">Zoo Keeper</div>` },
     },
     openai: {
         title: 'OpenAI',
@@ -112,11 +112,6 @@ export const technologies: Record<string, TechProps> = {
         title: 'OpenCV',
         url: 'https://opencv.org/',
         logo: { type: 'img', value: opencvLogo },
-    },
-    moderngl: {
-        title: 'ModernGL',
-        url: 'https://moderngl.readthedocs.io/',
-        logo: { type: 'img', value: modernglLogo },
     },
     alfworld: {
         title: 'ALFWorld',
@@ -158,6 +153,45 @@ export const technologies: Record<string, TechProps> = {
         url: 'https://www.thymio.org/',
         logo: { type: 'img', value: thymioLogo },
     },
+    ros2: {
+        title: 'ROS 2',
+        url: 'https://docs.ros.org/en/rolling/',
+        logo: {
+            type: 'html',
+            value: `<div class="font-bold h-full flex items-center justify-center text-xs">ROS 2</div>`,
+        },
+    },
+    mujoco: {
+        title: 'MuJoCo',
+        url: 'https://mujoco.org/',
+        logo: {
+            type: 'html',
+            value: `<div class="font-bold h-full flex items-center justify-center text-xs">MuJoCo</div>`,
+        },
+    },
+    isaaclab: {
+        title: 'Isaac Lab',
+        url: 'https://isaac-sim.github.io/IsaacLab/',
+        logo: {
+            type: 'html',
+            value: `<div class="font-bold h-full flex items-center justify-center text-xs leading-tight text-center">Isaac Lab</div>`,
+        },
+    },
+    arduino: {
+        title: 'Arduino',
+        url: 'https://www.arduino.cc/',
+        logo: { type: 'svg', value: arduinoLogo },
+    },
+    '3dprinting': {
+        title: '3D Printing',
+        url: 'https://en.wikipedia.org/wiki/3D_printing',
+        logo: { type: 'svg', value: printingIcon },
+    },
+    lerobot: {
+        title: 'LeRobot',
+        url: 'https://huggingface.co/lerobot',
+        logo: { type: 'img', value: lerobotLogo },
+    },
 }
 
 /*
@@ -173,5 +207,4 @@ export const technologies: Record<string, TechProps> = {
 'tailwindcss': '/images/tailwindcss-mark.d52e9897.svg',
 'apache-zookeeper': '/images/apache-zookeeper-logo.png',
 'opencv': '/images/opencv-logo.webp',
-'moderngl': '/images/moderngl-logo.png',
 */

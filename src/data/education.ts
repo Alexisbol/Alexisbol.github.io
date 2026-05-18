@@ -1,7 +1,7 @@
 export interface EducationProps {
     institution: {
         name: string // Name of the institution
-        url: string // URL to the institution's website
+        url?: string // URL to the institution's website
         logo?: {
             type: 'img' | 'svg' | 'html'
             value: string | ImageMetadata | ((props: any) => any) // Source URL of the image or a component/function returning an image
@@ -14,8 +14,9 @@ export interface EducationProps {
 }
 
 import epflLogo from '../assets/logos-icons/epfl-logo-cropped.png'
-import mcgillLogo from '../assets/logos-icons/mcgill-logo-s.jpg'
-import epsomCollegeLogo from '../assets/logos-icons/epsom-college-logo-s.jpg'
+import ecnLogo from '../assets/logos-icons/ecn-logo.png'
+import chaptalLogo from '../assets/logos-icons/chaptal-logo.jpg'
+import carnotLogo from '../assets/logos-icons/lycee_carnot_paris_logo.jpeg'
 
 export const education: EducationProps[] = [
     {
@@ -27,37 +28,49 @@ export const education: EducationProps[] = [
                 value: epflLogo,
             },
         },
-        degree: 'MSc - Robotics',
-        fromDate: 'Sep 2025',
-        toDate: 'Dec 2027 (expected)',
-        description: `I'm specializing in Mobile Robotics, with a focus on Embodied AI. After knocking out the rigorous mathematical foundations (MPC, Convex Optimization), I'm now applying them to physical systems - currently doing research on real-time vision for drones, alongside coursework in RL, CV and deep learning for autonomous vehicles.`,
+        degree: 'MSc - Robotics (Double Degree)',
+        fromDate: '2025',
+        toDate: 'present',
+        description: `Specializing in the intersection of Reinforcement Learning and autonomous systems. Focusing on Robot Dynamics, Control Systems, and Deep Learning. Relevant courses: Legged robots, Reinforcement learning, Machine learning I, Model predictive control, Advanced control systems, Applied data analysis, Deep learning.`,
     },
     {
         institution: {
-            name: 'McGill University',
-            url: 'https://www.mcgill.ca',
+            name: 'École Centrale de Nantes',
+            url: 'https://www.ec-nantes.fr',
             logo: {
                 type: 'img',
-                value: mcgillLogo,
+                value: ecnLogo,
             },
         },
-        degree: 'BSc - Honours Computer Science',
-        fromDate: 'Aug 2022',
-        toDate: 'May 2025',
-        description: `I graduated with First-Class Honours (3.85 GPA), dipping my toes in various advanced topics like Machine Learning, Computer Animation, Computational Biology, and Distributed Systems. Outside of class, I was heavily involved in <a href="https://www.mcgillrobotics.ca" target="_blank">McGill Robotics</a>, <a href="https://gamedevmcgill.ca/" target="_blank">GameDev McGill</a>, and competed in hackathons like <a href="https://mchacks.ca/" target="_blank">McHacks</a> and <a href="https://www.linkedin.com/company/pharmahacks/about/" target="_blank">PharmaHacks</a>.`,
+        degree: 'MSc - Engineering',
+        fromDate: '2023',
+        toDate: '2025',
+        description: `Engineering student at a highly selective French <em>Grande École</em> conferring a degree equivalent to a Master of Science. Specialization in Robotics, Control Systems, and Software Engineering.`,
     },
     {
         institution: {
-            name: 'Epsom College',
-            url: 'https://www.epsomcollege.org.uk/',
+            name: 'Lycée Chaptal',
             logo: {
                 type: 'img',
-                value: epsomCollegeLogo,
+                value: chaptalLogo,
             },
         },
-        degree: 'A-Levels (CS, Math, Phys) & GCSEs',
-        fromDate: 'Sep 2017',
-        toDate: 'Jun 2022',
-        description: `My secondary education in the UK, where I earned Art and Computer Science awards, laid the groundwork for my technical and creative interests. Beyond academics, I was active in the school's tennis and field hockey teams, and completed my Duke of Edinburgh's Award.`,
+        degree: 'Classes Préparatoires aux Grandes Écoles (MPSI/MP)',
+        fromDate: '2021',
+        toDate: '2023',
+        description: `Two-year intensive undergraduate program in Mathematics and Physics preparing for competitive national entrance exams to the Grandes Écoles.`,
+    },
+    {
+        institution: {
+            name: 'Lycée Carnot',
+            logo: {
+                type: 'img',
+                value: carnotLogo,
+            },
+        },
+        degree: 'Baccalauréat (Maths-Physics) with Honours',
+        fromDate: 'Sep 2018',
+        toDate: 'Jun 2021',
+        description: `Equivalent to a High School Diploma, majoring in Mathematics and Physics, obtained with Honours.`,
     },
 ]

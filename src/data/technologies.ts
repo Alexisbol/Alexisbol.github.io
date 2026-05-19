@@ -24,6 +24,11 @@ import geminiLogo from '../assets/logos-icons/gemini-logo.svg'
 import dspyLogo from '../assets/logos-icons/dspy-logo.png'
 import cvxpyLogo from '../assets/logos-icons/cvxpy-logo-light.png'
 import casadiLogo from '../assets/logos-icons/casadi-logo-light.svg'
+import mujocoLogo from '../assets/logos-icons/mujoco-logo.png'
+import isaaclabLogo from '../assets/logos-icons/isaaclab-logo.png'
+import myosuiteLogo from '../assets/logos-icons/myosuite-logo.png'
+import dimosLogo from '../assets/logos-icons/dimos-logo.svg'
+import ros2Logo from '../assets/logos-icons/ros2-logo.svg'
 import webotsLogo from '../assets/logos-icons/webots-logo.png'
 import thymioLogo from '../assets/logos-icons/thymio-logo.png'
 import arduinoLogo from '../assets/logos-icons/arduino-logo.svg'
@@ -156,26 +161,27 @@ export const technologies: Record<string, TechProps> = {
     ros2: {
         title: 'ROS 2',
         url: 'https://docs.ros.org/en/rolling/',
-        logo: {
-            type: 'html',
-            value: `<div class="font-bold h-full flex items-center justify-center text-xs">ROS 2</div>`,
-        },
+        logo: { type: 'svg', value: ros2Logo },
     },
     mujoco: {
         title: 'MuJoCo',
         url: 'https://mujoco.org/',
-        logo: {
-            type: 'html',
-            value: `<div class="font-bold h-full flex items-center justify-center text-xs">MuJoCo</div>`,
-        },
+        logo: { type: 'img', value: mujocoLogo },
+    },
+    myosuite: {
+        title: 'MyoSuite',
+        url: 'https://myosuite.readthedocs.io/',
+        logo: { type: 'img', value: myosuiteLogo },
+    },
+    dimos: {
+        title: 'DiMOS',
+        url: 'https://github.com/dimensionalOS/dimos',
+        logo: { type: 'svg', value: dimosLogo },
     },
     isaaclab: {
         title: 'Isaac Lab',
         url: 'https://isaac-sim.github.io/IsaacLab/',
-        logo: {
-            type: 'html',
-            value: `<div class="font-bold h-full flex items-center justify-center text-xs leading-tight text-center">Isaac Lab</div>`,
-        },
+        logo: { type: 'img', value: isaaclabLogo },
     },
     arduino: {
         title: 'Arduino',

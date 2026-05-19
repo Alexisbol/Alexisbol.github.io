@@ -15,13 +15,13 @@ const { technologies } = Astro.props as { technologies: string[] }
                         <img
                             src={tech.logo.value.src}
                             alt={tech.title}
-                            class="block h-6 sm:h-8 lg:h-6.5 w-auto object-contain"
+                            class="block h-8 sm:h-10 lg:h-8 w-auto object-contain"
                         />
                     ) : tech.logo.type === 'svg' ? (
-                        <tech.logo.value class="block h-6 sm:h-8 lg:h-6.5 w-auto object-contain" />
+                        <tech.logo.value class="block h-8 sm:h-10 lg:h-8 w-auto object-contain" />
                     ) : (
                         <div
-                            class="h-6 sm:h-8 lg:h-6.5 inline-flex items-center justify-center"
+                            class="h-8 sm:h-10 lg:h-8 inline-flex items-center justify-center"
                             set:html={tech.logo.value}
                         />
                     )}

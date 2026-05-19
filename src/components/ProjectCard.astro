@@ -35,7 +35,7 @@ const isCarousel = validIndices.length > 1
                         return (
                             <div class={wrapClass} data-slide>
                                 {item.type === 'image' ? (
-                                    <img src={src} alt={item.alt ?? title} class={mediaClass} />
+                                    <img src={src} alt={item.alt ?? title} class={mediaClass} loading="eager" />
                                 ) : (
                                     <video
                                         src={src}
@@ -61,7 +61,7 @@ const isCarousel = validIndices.length > 1
             <>
                 <button
                     class="carousel-prev pointer-events-auto absolute z-10
-                           right-10 top-1/2 -translate-y-1/2
+                           right-10 bottom-3
                            w-7 h-7 rounded-lg bg-black/50 text-white text-lg leading-none
                            flex items-center justify-center
                            opacity-70 group-hover/card:opacity-100 hover:bg-black/75
@@ -72,7 +72,7 @@ const isCarousel = validIndices.length > 1
                 </button>
                 <button
                     class="carousel-next pointer-events-auto absolute z-10
-                           right-2 top-1/2 -translate-y-1/2
+                           right-2 bottom-3
                            w-7 h-7 rounded-lg bg-black/50 text-white text-lg leading-none
                            flex items-center justify-center
                            opacity-70 group-hover/card:opacity-100 hover:bg-black/75
@@ -130,13 +130,26 @@ const isCarousel = validIndices.length > 1
 
         let current = 0
 
-        // Lock initial width so CSS transition has an explicit value to animate from
-        if (carousel) carousel.style.width = carousel.offsetWidth + 'px'
-
         const naturalDisplayWidth = (slide: HTMLElement) => {
             const img = slide.querySelector('img') as HTMLImageElement | null
             if (!img || !carousel || !img.naturalWidth || !img.naturalHeight) return null
             return carousel.offsetHeight * img.naturalWidth / img.naturalHeight
+        }
+
+        // Lock initial width so CSS transition has an explicit value to animate from.
+        // Must wait for the image to load — below-fold cards have offsetWidth = 0 until then.
+        const initWidth = () => {
+            const w = naturalDisplayWidth(slides[0])
+            if (w && carousel) carousel.style.width = w + 'px'
+            else if (carousel && carousel.offsetWidth > 0) carousel.style.width = carousel.offsetWidth + 'px'
+        }
+        const firstImg = slides[0]?.querySelector('img') as HTMLImageElement | null
+        if (firstImg && firstImg.complete && firstImg.naturalWidth) {
+            initWidth()
+        } else if (firstImg) {
+            firstImg.addEventListener('load', initWidth)
+        } else {
+            initWidth()
         }
 
         const showSlide = (idx: number) => {
@@ -151,7 +164,17 @@ const isCarousel = validIndices.length > 1
             next.classList.add('relative')
 
             const w = naturalDisplayWidth(next)
-            if (w && carousel) carousel.style.width = w + 'px'
+            if (w && carousel) {
+                carousel.style.width = w + 'px'
+            } else {
+                const img = next.querySelector('img') as HTMLImageElement | null
+                if (img && carousel) {
+                    img.onload = () => {
+                        const w2 = naturalDisplayWidth(next)
+                        if (w2) carousel.style.width = w2 + 'px'
+                    }
+                }
+            }
         }
 
         card.querySelector('.carousel-prev')?.addEventListener('click', () => showSlide(current - 1))

@@ -13,8 +13,20 @@ import abs2 from '../assets/projects/ABS_2.jpg'
 import aquabotImg from '../assets/projects/Aquabot.png'
 import aquabot2Img from '../assets/projects/Aquabot_2.png'
 import northernStarImg from '../assets/projects/Hackathon_dog_1.png'
-import sumoBotImg from '../assets/projects/sumo_bot.jpg'
 import lerobotImg from '../assets/projects/hackathon.webp'
+import lerobot2Img from '../assets/projects/lerobot_2.jpg'
+import sp1Img from '../assets/projects/SP_1.png'
+import pawsPlaceholderImg from '../assets/projects/PAWS_placeholder.jpg'
+import sp2Img from '../assets/projects/SP_2.png'
+import mpcImg from '../assets/projects/MPC.png'
+import leggedRobotImg from '../assets/projects/Legged_robot.png'
+import leggedRobot2Img from '../assets/projects/Legged_robot_2.png'
+import leggedRobot3Img from '../assets/projects/Legged_robot_3.png'
+import p3_1Img from '../assets/projects/P3_1.png'
+import p3_2Img from '../assets/projects/P3_2.png'
+import p3_3Img from '../assets/projects/P3_3.png'
+import p3_4Img from '../assets/projects/P3_4.jpg'
+import p3_5Img from '../assets/projects/P3_5.png'
 
 export interface ProjectProps {
     title: string // Title of the project
@@ -36,15 +48,83 @@ export interface ProjectProps {
 
 export const projects: ProjectProps[] = [
     {
+        title: 'Musculoskeletal Table Tennis — RL Agent',
+        summary:
+            'Semester project enhancing an RL agent to play table tennis using complex musculoskeletal models within the MyoSuite and MuJoCo frameworks. Developing an adaptable control policy capable of precise muscle coordination and rapid strategic decision-making.',
+        fromDate: 'Feb 2026',
+        toDate: 'Jun 2026',
+        categories: ['robotics', 'ai'],
+        technologies: ['python', 'mujoco', 'myosuite'],
+        coverMedia: [0, 1],
+        media: [
+            { type: 'image', src: sp1Img },
+            { type: 'image', src: sp2Img },
+        ],
+    },
+    {
+        title: 'PAWS — Quadruped Locomotion (EPFL AI Team)',
+        summary:
+            'Developed quadruped locomotion policies with reinforcement learning using NVIDIA Isaac Lab. Worked on sim-to-sim and sim-to-real transfer to deploy the learned policy on the Unitree Go2 quadruped robot.',
+        fromDate: 'Feb 2026',
+        toDate: 'Jun 2026',
+        categories: ['robotics', 'ai'],
+        technologies: ['python', 'isaaclab'],
+        coverMedia: 0,
+        media: [{ type: 'image', src: pawsPlaceholderImg }],
+    },
+    {
         title: 'Northern-Star — Robotic Guide Dog',
         summary:
             'RoboHack2026 (EPFL) hackathon project: programmed a robotic guide dog with GPS-based global navigation and agentic natural language interaction for real-time guidance. Implemented autonomous path planning and human interaction in a 48-hour challenge.',
         fromDate: 'Apr 2026',
         toDate: 'Apr 2026',
         categories: ['robotics', 'ai'],
-        technologies: ['python', 'ros2'],
+        technologies: ['python', 'ros2', 'dimos'],
         coverMedia: 0,
         media: [{ type: 'image', src: northernStarImg }],
+    },
+    {
+        title: 'Rocket Landing with MPC',
+        summary:
+            'A control project demonstrating autonomous rocket landing using Robust and Nonlinear Model Predictive Control (MPC). Engineered a 12-state NMPC for propulsive landing and Robust Tube MPC for vertical descent to guarantee collision avoidance under stochastic disturbances.',
+        fromDate: 'Sep 2025',
+        toDate: 'Jan 2026',
+        categories: ['systems'],
+        technologies: ['python', 'casadi', 'cvxpy'],
+        coverMedia: 0,
+        media: [{ type: 'image', src: mpcImg }],
+    },
+    {
+        title: 'Legged Robot — Quadruped Locomotion',
+        summary:
+            'Explored two control approaches for quadruped locomotion on a Unitree A1 robot: gait synthesis with Central Pattern Generators (CPG) and deep reinforcement learning via DRL and CPG-RL algorithms. Simulations performed in a gym environment using Stable-Baselines3 and PyTorch.',
+        fromDate: 'Sep 2025',
+        toDate: 'Jan 2026',
+        categories: ['robotics', 'ai'],
+        technologies: ['python', 'mujoco'],
+        coverMedia: [0, 1, 2],
+        media: [
+            { type: 'image', src: leggedRobotImg },
+            { type: 'image', src: leggedRobot2Img },
+            { type: 'image', src: leggedRobot3Img },
+        ],
+    },
+    {
+        title: '6-DOF Robotic Platform Control',
+        summary:
+            'Engineering internship developing a ROS2 controller for a 6-DOF RSS6 robotic platform. Integrated CANopen communication for actuator control, implemented forward and inverse kinematics models, and used motion capture to quantify positioning accuracy.',
+        fromDate: 'Feb 2025',
+        toDate: 'Jun 2025',
+        categories: ['robotics', 'systems'],
+        technologies: ['ros2', 'cpp', 'python'],
+        coverMedia: [0, 1, 2, 3, 4],
+        media: [
+            { type: 'image', src: p3_1Img },
+            { type: 'image', src: p3_2Img },
+            { type: 'image', src: p3_3Img },
+            { type: 'image', src: p3_4Img },
+            { type: 'image', src: p3_5Img },
+        ],
     },
     {
         title: 'Aquabot — Autonomous Surface Vehicle',
@@ -53,8 +133,8 @@ export const projects: ProjectProps[] = [
         fromDate: 'Jun 2024',
         toDate: 'Jun 2024',
         categories: ['robotics'],
-        technologies: ['python', 'ros2', 'cpp'],
-        coverMedia: [1, 0],
+        technologies: ['ros2', 'cpp', 'python'],
+        coverMedia: [0, 1],
         media: [{ type: 'image', src: aquabotImg }, { type: 'image', src: aquabot2Img }],
     },
     {
@@ -65,19 +145,8 @@ export const projects: ProjectProps[] = [
         toDate: 'Jun 2024',
         categories: ['robotics', 'ai'],
         technologies: ['python', 'lerobot'],
-        coverMedia: 0,
-        media: [{ type: 'image', src: lerobotImg }],
-    },
-    {
-        title: 'Sumo Bot',
-        summary:
-            'Built a differential-wheeled autonomous sumo robot from scratch for a competition. Designed the mechanical structure and programmed reactive behavior to detect and engage opponents while staying inside the arena boundary.',
-        fromDate: 'Mar 2024',
-        toDate: 'Apr 2024',
-        categories: ['robotics', 'systems'],
-        technologies: ['arduino', '3dprinting'],
-        coverMedia: 0,
-        media: [{ type: 'image', src: sumoBotImg }],
+        coverMedia: [0, 1],
+        media: [{ type: 'image', src: lerobot2Img }, { type: 'image', src: lerobotImg }],
     },
     {
         title: 'Bicycle Anti-Lock Braking System',

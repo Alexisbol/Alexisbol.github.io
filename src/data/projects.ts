@@ -31,6 +31,8 @@ import p3_5Img from '../assets/projects/P3_5.png'
 export interface ProjectProps {
     title: string // Title of the project
     summary: string // Short (~250-300 character) summary of the project, shown on the project card
+    type?: string // Type of project, e.g. 'Semester Project', 'Hackathon', 'Internship'
+    location?: string // Lab or institution, e.g. 'Mathis Lab · EPFL', 'EPFL AI Team'
     fromDate: string // Start date of the project, formatted as `Mon YYYY`
     toDate?: string // End date of the project, formatted as `Mon YYYY`, optional (for ongoing projects)
     categories: CategoryId[] // Categories the project belongs to, e.g., ['robotics', 'ai'] (at least one required)
@@ -48,13 +50,15 @@ export interface ProjectProps {
 
 export const projects: ProjectProps[] = [
     {
-        title: 'Musculoskeletal Table Tennis — RL Agent',
+        title: 'Musculoskeletal Table Tennis',
         summary:
             'Semester project enhancing an RL agent to play table tennis using complex musculoskeletal models within the MyoSuite and MuJoCo frameworks. Developing an adaptable control policy capable of precise muscle coordination and rapid strategic decision-making.',
+        type: 'Semester Project',
+        location: 'Mathis Lab · EPFL',
         fromDate: 'Feb 2026',
         toDate: 'Jun 2026',
         categories: ['robotics', 'ai'],
-        technologies: ['python', 'mujoco', 'myosuite'],
+        technologies: ['rsl-rl', 'mujoco', 'myosuite'],
         coverMedia: [0, 1],
         media: [
             { type: 'image', src: sp1Img },
@@ -62,20 +66,24 @@ export const projects: ProjectProps[] = [
         ],
     },
     {
-        title: 'PAWS — Quadruped Locomotion (EPFL AI Team)',
+        title: 'Quadruped Locomotion',
         summary:
             'Developed quadruped locomotion policies with reinforcement learning using NVIDIA Isaac Lab. Worked on sim-to-sim and sim-to-real transfer to deploy the learned policy on the Unitree Go2 quadruped robot.',
+        type: 'AI Team',
+        location: 'EPFL AI Team',
         fromDate: 'Feb 2026',
         toDate: 'Jun 2026',
         categories: ['robotics', 'ai'],
-        technologies: ['python', 'isaaclab'],
+        technologies: ['isaaclab'],
         coverMedia: 0,
         media: [{ type: 'image', src: pawsPlaceholderImg }],
     },
     {
-        title: 'Northern-Star — Robotic Guide Dog',
+        title: 'Robotic Guide Dog',
         summary:
-            'RoboHack2026 (EPFL) hackathon project: programmed a robotic guide dog with GPS-based global navigation and agentic natural language interaction for real-time guidance. Implemented autonomous path planning and human interaction in a 48-hour challenge.',
+            'RoboHack2026 (EPFL) hackathon project: programmed a robotic guide dog (code-name Northern-Star) with GPS-based global navigation and agentic natural language interaction for real-time guidance. Implemented autonomous path planning and human interaction in a 36-hour challenge.',
+        type: 'Hackathon',
+        location: 'EPFL',
         fromDate: 'Apr 2026',
         toDate: 'Apr 2026',
         categories: ['robotics', 'ai'],
@@ -87,6 +95,8 @@ export const projects: ProjectProps[] = [
         title: 'Rocket Landing with MPC',
         summary:
             'A control project demonstrating autonomous rocket landing using Robust and Nonlinear Model Predictive Control (MPC). Engineered a 12-state NMPC for propulsive landing and Robust Tube MPC for vertical descent to guarantee collision avoidance under stochastic disturbances.',
+        type: 'Course ME-425',
+        location: 'EPFL',
         fromDate: 'Sep 2025',
         toDate: 'Jan 2026',
         categories: ['systems'],
@@ -98,10 +108,12 @@ export const projects: ProjectProps[] = [
         title: 'Legged Robot — Quadruped Locomotion',
         summary:
             'Explored two control approaches for quadruped locomotion on a Unitree A1 robot: gait synthesis with Central Pattern Generators (CPG) and deep reinforcement learning via DRL and CPG-RL algorithms. Simulations performed in a gym environment using Stable-Baselines3 and PyTorch.',
+        type: 'Course MICRO-507',
+        location: 'EPFL',
         fromDate: 'Sep 2025',
         toDate: 'Jan 2026',
         categories: ['robotics', 'ai'],
-        technologies: ['python', 'mujoco'],
+        technologies: ['sb3', 'mujoco'],
         coverMedia: [0, 1, 2],
         media: [
             { type: 'image', src: leggedRobotImg },
@@ -113,6 +125,8 @@ export const projects: ProjectProps[] = [
         title: '6-DOF Robotic Platform Control',
         summary:
             'Engineering internship developing a ROS2 controller for a 6-DOF RSS6 robotic platform. Integrated CANopen communication for actuator control, implemented forward and inverse kinematics models, and used motion capture to quantify positioning accuracy.',
+        type: 'Internship',
+        location: 'ISIR · Sorbonne',
         fromDate: 'Feb 2025',
         toDate: 'Jun 2025',
         categories: ['robotics', 'systems'],
@@ -130,10 +144,12 @@ export const projects: ProjectProps[] = [
         title: 'Aquabot — Autonomous Surface Vehicle',
         summary:
             'Led a team of 5 in the Aquabot 2024 autonomous boat challenge with Naval Group. Programmed ROS2 nodes for GPS waypoint navigation and reactive control to handle swell and wind disturbances on an autonomous surface vehicle.',
-        fromDate: 'Jun 2024',
-        toDate: 'Jun 2024',
+        type: 'Challenge',
+        location: 'École Centrale de Nantes',
+        fromDate: 'Sep 2024',
+        toDate: 'Dec 2024',
         categories: ['robotics'],
-        technologies: ['ros2', 'cpp', 'python'],
+        technologies: ['ros2', 'gazebo', 'cpp', 'python'],
         coverMedia: [0, 1],
         media: [{ type: 'image', src: aquabotImg }, { type: 'image', src: aquabot2Img }],
     },
@@ -141,10 +157,12 @@ export const projects: ProjectProps[] = [
         title: 'LeRobot — RL on a Robotic Arm',
         summary:
             'Hugging Face LeRobot hackathon: trained a reinforcement learning policy for manipulation on a low-cost robotic arm. Explored reward shaping and domain randomization techniques to achieve reliable task completion.',
+        type: 'Hackathon',
+        location: 'HuggingFace',
         fromDate: 'Jun 2024',
         toDate: 'Jun 2024',
         categories: ['robotics', 'ai'],
-        technologies: ['python', 'lerobot'],
+        technologies: ['lerobot'],
         coverMedia: [0, 1],
         media: [{ type: 'image', src: lerobot2Img }, { type: 'image', src: lerobotImg }],
     },
@@ -152,6 +170,8 @@ export const projects: ProjectProps[] = [
         title: 'Bicycle Anti-Lock Braking System',
         summary:
             'Conducted a feasibility study of an ABS system applied to bicycles and built a working prototype using an Arduino and 3D-printed parts. Collaborated with a senior e-VTT engineer from Décathlon to validate the design and mechanical choices.',
+        type: 'Project',
+        location: 'Lycée Chaptal',
         fromDate: 'Sep 2023',
         toDate: 'Jan 2024',
         categories: ['robotics', 'systems'],

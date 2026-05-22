@@ -29,7 +29,7 @@ import { contacts } from '../data/contacts'
                             text-[30px] sm:text-[32px] leading-[0.92] font-medium"
                     >
                         <span class="break-words whitespace-normal text-base sm:text-lg mb-1"
-                            >👋 Hey, I'm</span
+                            >👋 Hello, I'm</span
                         >
                         <span class="break-words whitespace-normal text-accent text-glow-s">
                             Alexis
@@ -49,22 +49,47 @@ import { contacts } from '../data/contacts'
             <div class="flex flex-col gap-3 overflow-auto max-h-[40vh] lg:max-h-full">
                 <p>
                     Hi! I'm Alexis, a Robotics Engineering student pursuing a double degree between
-                    EPFL and École Centrale de Nantes. I specialize in the intersection of
-                    Reinforcement Learning and autonomous systems — from training legged robot
-                    locomotion policies to building low-level robot control pipelines.
+                    EPFL and École Centrale de Nantes.
                 </p>
                 <p>
-                    My hands-on experience spans RL agent training with Isaac Lab and MuJoCo,
-                    ROS2-based robot control, and research in parallel robot kinematics and
-                    computational neuroscience. I'm passionate about closing the sim-to-real gap:
-                    getting policies trained in simulation to actually work on physical hardware.
-                    Outside of robotics, I'm an avid volleyball player, half-marathon runner, and
-                    former competitive table tennis player.
+                    I'm interested in autonomous systems and control methods. Wether it's new
+                    approaches with Reinforcement Learning or traditional ones. I like to
+                    balance between the opportunities offered by simulation and implementing my ideas
+                    into real products.
                 </p>
+                <p>
+                    You can find evidence of this balance on the project section with my experiences ranging from ROS2 control to RL agent
+                    training on multiple environments and engines.
+                </p>
+                <p>
+                    Outside of robotics, I love to play sports. I started with <button id="tt-easter-egg" aria-label="Watch a table tennis clip">table tennis</button>,
+                    this early passion propagated to all racket sports! I'm also a volleyball player
+                    and half-marathon runner. Overall, I would say that playing sports is my favorite
+                    hobby!!
+                </p>
+                <div id="tt-video-container">
+                    <div id="tt-video-inner">
+                        <div id="tt-video-box">
+                            <div id="tt-video-header">
+                                <span>🏓 back when i was good</span>
+                                <button id="tt-close" aria-label="Close">✕</button>
+                            </div>
+                            <div id="tt-video-wrapper">
+                                <iframe
+                                    id="tt-iframe"
+                                    src=""
+                                    title="Table tennis clip"
+                                    frameborder="0"
+                                    allow="autoplay; encrypted-media"
+                                    allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <p>
                     I'm actively seeking a <strong>6-month industry internship in robotics starting
                     September 2026</strong>. If you're working on legged robots, embodied AI, or
-                    autonomous systems, I'd love to connect — feel free to reach out!
+                    autonomous systems, I'd love to connect! Feel free to reach out!
                 </p>
             </div>
         </div>
@@ -72,4 +97,134 @@ import { contacts } from '../data/contacts'
             <TabNavigator />
         </div>
     </div>
+
 </Layout>
+
+<style>
+    #tt-easter-egg {
+        background: none;
+        border: none;
+        padding: 0;
+        font: inherit;
+        color: var(--accent);
+        cursor: pointer;
+        text-decoration: underline dotted;
+        text-decoration-color: color-mix(in oklch, var(--accent) 50%, transparent);
+        text-underline-offset: 3px;
+        transition: text-shadow 0.1s ease;
+    }
+    #tt-easter-egg:hover {
+        text-shadow: 0 0 6px rgba(var(--glow-rgb), 0.4);
+        text-decoration-color: var(--accent);
+    }
+
+    /* Collapse/expand using grid trick so no fixed height needed */
+    #tt-video-container {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    #tt-video-container.open {
+        grid-template-rows: 1fr;
+    }
+
+    #tt-video-inner {
+        overflow: hidden;
+    }
+
+    #tt-video-box {
+        border-radius: 0.875rem;
+        overflow: hidden;
+        background: var(--surface);
+        box-shadow:
+            0 0 0 1px oklch(100% 0 0 / 8%),
+            0 0 16px rgba(var(--glow-rgb), 0.2);
+        margin-bottom: 0.25rem;
+        transform: translateY(-6px);
+        opacity: 0;
+        transition:
+            transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+            opacity 0.3s ease;
+    }
+    #tt-video-container.open #tt-video-box {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    #tt-video-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.5rem 0.6rem 0.5rem 0.875rem;
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: var(--accent);
+        background: oklch(100% 0 0 / 4%);
+        border-bottom: 1px solid oklch(100% 0 0 / 6%);
+    }
+
+    #tt-close {
+        background: none;
+        border: none;
+        color: var(--on-surface);
+        opacity: 0.5;
+        cursor: pointer;
+        font-size: 0.9rem;
+        padding: 0.15rem 0.35rem;
+        border-radius: 0.35rem;
+        transition: opacity 0.1s, background 0.1s;
+    }
+    #tt-close:hover {
+        opacity: 1;
+        background: oklch(100% 0 0 / 8%);
+    }
+
+    #tt-video-wrapper {
+        position: relative;
+        aspect-ratio: 16 / 9;
+        background: #000;
+    }
+    #tt-iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<script>
+    const container = document.getElementById('tt-video-container')!
+    const closeBtn = document.getElementById('tt-close')!
+    const iframe = document.getElementById('tt-iframe') as HTMLIFrameElement
+    const trigger = document.getElementById('tt-easter-egg')!
+
+    // Preload the player immediately — hidden in the collapsed container
+    iframe.src = 'https://www.youtube.com/embed/82llbbMgHbw?start=310&end=315&autoplay=0&rel=0&enablejsapi=1'
+
+    function ytCmd(cmd: string, args: unknown[] = []) {
+        iframe.contentWindow?.postMessage(
+            JSON.stringify({ event: 'command', func: cmd, args }),
+            '*'
+        )
+    }
+
+    function open() {
+        container.classList.add('open')
+        ytCmd('playVideo')
+    }
+
+    function close() {
+        container.classList.remove('open')
+        ytCmd('pauseVideo')
+        // seek back to start so next open plays from the right spot
+        setTimeout(() => ytCmd('seekTo', [310, true]), 350)
+    }
+
+    trigger.addEventListener('click', () => {
+        container.classList.contains('open') ? close() : open()
+    })
+    closeBtn.addEventListener('click', close)
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') close()
+    })
+</script>

@@ -5,7 +5,8 @@ import TechnologyRibbon from './TechnologyRibbon.astro'
 const {
     title,
     summary,
-    description,
+    type,
+    location,
     fromDate,
     toDate,
     categories = [],
@@ -16,6 +17,15 @@ const {
     coverMedia,
     media = [],
 } = Astro.props as ProjectProps
+
+const [fromMon, fromYear] = fromDate.split(' ')
+const dateRange = toDate
+    ? (() => {
+          const [toMon, toYear] = toDate.split(' ')
+          if (fromYear === toYear) return fromMon === toMon ? fromDate : `${fromMon} – ${toMon} ${toYear}`
+          return `${fromDate} – ${toDate}`
+      })()
+    : `${fromDate} – present`
 
 const indices = Array.isArray(coverMedia) ? coverMedia : [coverMedia]
 const validIndices = indices.filter((i) => i >= 0 && i < media.length)
@@ -89,6 +99,11 @@ const isCarousel = validIndices.length > 1
         <div
             class="group-hover/card:text-on-surface text-on-surface/85 transition-all duration-100 ease-out"
         >
+            <div class="flex flex-wrap items-center gap-x-1.5 gap-y-0.5 mb-0.5">
+                {type && <span class="project-type-badge">{type}</span>}
+                <span class="text-on-surface/45 text-[10px] sm:text-xs lg:text-[10px]">{dateRange}</span>
+                {location && <span class="text-on-surface/45 text-[10px] sm:text-xs lg:text-[10px]">· {location}</span>}
+            </div>
             <h4 class="font-medium text-xl sm:text-3xl lg:text-2xl">{title}</h4>
             <p class="mt-0.5 sm:mt-1.5 lg:mt-0.5 sm:w-2/3 text-xs sm:text-base lg:text-sm">
                 {summary}

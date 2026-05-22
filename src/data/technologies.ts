@@ -4,6 +4,7 @@ export interface TechProps {
     logo: {
         type: 'img' | 'svg' | 'html'
         value: string | ImageMetadata | ((props: any) => any)
+        wrapperClass?: string
     }
 }
 
@@ -28,12 +29,15 @@ import mujocoLogo from '../assets/logos-icons/mujoco-logo.png'
 import isaaclabLogo from '../assets/logos-icons/isaaclab-logo.png'
 import myosuiteLogo from '../assets/logos-icons/myosuite-logo.png'
 import dimosLogo from '../assets/logos-icons/dimos-logo.svg'
+import gazeboLogo from '../assets/logos-icons/gazebo.png'
 import ros2Logo from '../assets/logos-icons/ros2-logo.svg'
 import webotsLogo from '../assets/logos-icons/webots-logo.png'
 import thymioLogo from '../assets/logos-icons/thymio-logo.png'
 import arduinoLogo from '../assets/logos-icons/arduino-logo.svg'
 import printingIcon from '../assets/logos-icons/3dprinting-icon.svg'
 import lerobotLogo from '../assets/projects/lerobot_image.webp'
+import sb3Logo from '../assets/logos-icons/sb3-logo.png'
+import rslRlLogo from '../assets/logos-icons/RSL-RL.svg'
 
 export const technologies: Record<string, TechProps> = {
     python: {
@@ -158,6 +162,11 @@ export const technologies: Record<string, TechProps> = {
         url: 'https://www.thymio.org/',
         logo: { type: 'img', value: thymioLogo },
     },
+    gazebo: {
+        title: 'Gazebo',
+        url: 'https://gazebosim.org/',
+        logo: { type: 'img', value: gazeboLogo },
+    },
     ros2: {
         title: 'ROS 2',
         url: 'https://docs.ros.org/en/rolling/',
@@ -197,6 +206,16 @@ export const technologies: Record<string, TechProps> = {
         title: 'LeRobot',
         url: 'https://huggingface.co/lerobot',
         logo: { type: 'img', value: lerobotLogo },
+    },
+    sb3: {
+        title: 'Stable Baselines 3',
+        url: 'https://stable-baselines3.readthedocs.io/',
+        logo: { type: 'img', value: sb3Logo },
+    },
+    'rsl-rl': {
+        title: 'RSL-RL',
+        url: 'https://github.com/leggedrobotics/rsl_rl',
+        logo: { type: 'svg', value: rslRlLogo, wrapperClass: 'bg-white rounded p-0.5' },
     },
 }
 

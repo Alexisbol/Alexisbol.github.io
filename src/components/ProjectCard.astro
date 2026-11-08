@@ -146,9 +146,11 @@ const isCarousel = validIndices.length > 1
         let current = 0
 
         const naturalDisplayWidth = (slide: HTMLElement) => {
-            const img = slide.querySelector('img') as HTMLImageElement | null
-            if (!img || !carousel || !img.naturalWidth || !img.naturalHeight) return null
-            return carousel.offsetHeight * img.naturalWidth / img.naturalHeight
+            const media = slide.querySelector('img, video') as HTMLImageElement | HTMLVideoElement | null
+            if (!media || !carousel) return null
+            const [nw, nh] = media instanceof HTMLVideoElement ? [media.videoWidth, media.videoHeight] : [media.naturalWidth, media.naturalHeight]
+            if (!nw || !nh) return null
+            return carousel.offsetHeight * nw / nh
         }
 
         // Lock initial width so CSS transition has an explicit value to animate from.
@@ -159,10 +161,13 @@ const isCarousel = validIndices.length > 1
             else if (carousel && carousel.offsetWidth > 0) carousel.style.width = carousel.offsetWidth + 'px'
         }
         const firstImg = slides[0]?.querySelector('img') as HTMLImageElement | null
+        const firstVideo = slides[0]?.querySelector('video') as HTMLVideoElement | null
         if (firstImg && firstImg.complete && firstImg.naturalWidth) {
             initWidth()
         } else if (firstImg) {
             firstImg.addEventListener('load', initWidth)
+        } else if (firstVideo && firstVideo.readyState < 1) {
+            firstVideo.addEventListener('loadedmetadata', initWidth)
         } else {
             initWidth()
         }
@@ -183,12 +188,13 @@ const isCarousel = validIndices.length > 1
                 carousel.style.width = w + 'px'
             } else {
                 const img = next.querySelector('img') as HTMLImageElement | null
-                if (img && carousel) {
-                    img.onload = () => {
-                        const w2 = naturalDisplayWidth(next)
-                        if (w2) carousel.style.width = w2 + 'px'
-                    }
+                const video = next.querySelector('video') as HTMLVideoElement | null
+                const update = () => {
+                    const w2 = naturalDisplayWidth(next)
+                    if (w2 && carousel) carousel.style.width = w2 + 'px'
                 }
+                if (img) img.onload = update
+                else if (video) video.onloadedmetadata = update
             }
         }
 

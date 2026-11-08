@@ -19,6 +19,7 @@ import sp1Img from '../assets/projects/SP_1.png'
 import pawsPlaceholderImg from '../assets/projects/PAWS_placeholder.jpg'
 import sp2Img from '../assets/projects/SP_2.png'
 import mpcImg from '../assets/projects/MPC.png'
+import hovercraftImg from '../assets/projects/hovercraft.jpg'
 import leggedRobotImg from '../assets/projects/Legged_robot.png'
 import leggedRobot2Img from '../assets/projects/Legged_robot_2.png'
 import leggedRobot3Img from '../assets/projects/Legged_robot_3.png'
@@ -50,13 +51,27 @@ export interface ProjectProps {
 
 export const projects: ProjectProps[] = [
     {
+        title: 'Air-Hockey Drone with MPC',
+        summary:
+            'Semester project developing a Model Predictive Control (MPC) formulation for a hovering "drone" playing air-hockey.',
+        type: 'Semester Project',
+        location: 'Automatic Control Laboratory · EPFL',
+        fromDate: 'Sep 2026',
+        categories: ['systems'],
+        technologies: ['casadi', 'ros2'],
+        coverMedia: [0, 1],
+        media: [
+            { type: 'video', src: '/videos/air-hockey.mp4' },
+            { type: 'image', src: hovercraftImg },
+        ],
+    },
+    {
         title: 'Musculoskeletal Table Tennis',
         summary:
-            'Semester project enhancing an RL agent to play table tennis using complex musculoskeletal models within the MyoSuite and MuJoCo frameworks. Developing an adaptable control policy capable of precise muscle coordination and rapid strategic decision-making.',
-        type: 'Semester Project',
+            'Semester project, then research assistant position, enhancing an RL agent to play table tennis using complex musculoskeletal models within the MyoSuite and MuJoCo frameworks. Developing an adaptable control policy capable of precise muscle coordination and rapid strategic decision-making.',
+        type: 'Research Assistant',
         location: 'Mathis Lab · EPFL',
         fromDate: 'Feb 2026',
-        toDate: 'Jun 2026',
         categories: ['robotics', 'ai'],
         technologies: ['rsl-rl', 'mujoco', 'myosuite'],
         coverMedia: [0, 1],
@@ -68,11 +83,10 @@ export const projects: ProjectProps[] = [
     {
         title: 'Quadruped Locomotion',
         summary:
-            'Developed quadruped locomotion policies with reinforcement learning using NVIDIA Isaac Lab. Worked on sim-to-sim and sim-to-real transfer to deploy the learned policy on the Unitree Go2 quadruped robot.',
+            'Developed quadruped locomotion policies with reinforcement learning using NVIDIA Isaac Lab. Worked on the hardware interface to control the motors of in-house made quadruped robots.',
         type: 'AI Team',
         location: 'EPFL AI Team',
         fromDate: 'Feb 2026',
-        toDate: 'Jun 2026',
         categories: ['robotics', 'ai'],
         technologies: ['isaaclab'],
         coverMedia: 0,
